@@ -1,6 +1,6 @@
 <?php
 
 echo("AHH");
-dwd
+echo("php");
 
 ?>
