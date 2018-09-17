@@ -5,6 +5,12 @@
 		<title>Login</title>
 	</head>
 	<?php
+	include 'globalVal.php'
+	function CleanString($input)
+	{
+		$input = htmlspecialchars($input);
+		return $input;
+	}
 
 	function PrintForm()
 	{
@@ -22,8 +28,9 @@
 		}
 		else 
 		{
+			$username = CleanString($_POST('appartment'));
+			$password = CleanString($_POST('password'));
 			
-
 		}
 }
 
