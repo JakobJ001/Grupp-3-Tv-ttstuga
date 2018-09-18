@@ -1,7 +1,8 @@
 <?php
+include 'globalVal.php';
 
 //Function that returns an array requests if succesfull. Otherwise returns ERROR or NOTHING depending
-function SqlRequest($query, $db)
+function SqlRequest($query, $db , &$rowCount = "")
 {
 	try
 	{
@@ -12,19 +13,20 @@ function SqlRequest($query, $db)
 			return ERROR;
 		}
 		//We do not want to continue if something goes wrong
-		if(!($stmt->execute()) 
+		if(!($stmt->execute()))
 		{
 			return ERROR;
 		}
+		$rowCount = $stmt->rowCount();
 		$toReturn = "";
 		//Checking if there's nothing to return
-		if(!($toReturn = stmt->fetchAll())
+		if(!($toReturn = $stmt->fetchAll()))
 		{
 			return NOTHING;
 		}
 		return $toReturn;
 	}
-	catch
+	catch (EXCEPTION $e)
 	{
 		return ERROR;
 	}
