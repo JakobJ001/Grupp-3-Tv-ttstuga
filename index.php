@@ -62,6 +62,22 @@
 		PrintForm(true);
 		return;
 	}
+	if (!password_verify($password, $curr['password']))
+	{
+		PrintForm(true);
+		return;
+	}
+	if ($username == "admin")
+	{
+		AdminSHit();
+		return;
+	}
+	else
+	{
+		OtherShit();
+		return;
+	}
+	
 ?>
 </body>
 </html>
