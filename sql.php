@@ -4,6 +4,7 @@ include 'globalVal.php';
 //Function that returns an array requests if succesfull. Otherwise returns ERROR or NOTHING depending
 function SqlRequest($query, $db , &$rowCount = "")
 {
+	
 	try
 	{
 		//SERVERNAME USERNAME and PASSWORD are all values defined in globalVal.php
