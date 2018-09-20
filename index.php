@@ -1,7 +1,5 @@
-
-
-	<?php
-	
+Ôªø<?php
+	session_start();
 	header('Content-type: text/html; charset=utf-8');
 	
 	//INCLUDES
@@ -18,10 +16,10 @@
 			</head><body>");
 		if ($error)
 		{
-			echo ("<p>Fel l‰genhetsnummer eller anv‰ndarnamn</p>");
+			echo ("<p>Fel l√§genhetsnummer eller anv√§ndarnamn</p>");
 		}
 		echo("<form action=\"\" method=\"POST\">
-			<input type=\"text\" value=\"L‰genhetsnummer\"/ name=\"appartment\">
+			<input type=\"text\" value=\"L√§genhetsnummer\"/ name=\"appartment\">
 			<input type=\"password\" value=\"Password\" name=\"password\"/>
 			<input type=\"submit\"/>
 			</form></body></html>");
@@ -70,13 +68,21 @@
 		}
 		if ($username == "admin")
 		{
-			AdminSHit();
-			return;
+			session_unset();
+			$_SESSION['username'] = $username;
+			$_SESSION['password'] = $curr['password'];
+			
+			header('Location: admin.php');
+			exit();
 		}
 		else
 		{
-			OtherShit();
-			return;
+			session_unset();
+			$_SESSION['username'] = $username;
+			$_SESSION['password'] = $curr['password'];
+			
+			header('Location: bokning.php');
+			exit();
 		}
 		
 	}		
