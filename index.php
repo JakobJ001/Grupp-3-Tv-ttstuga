@@ -46,30 +46,39 @@
 		$rowCount;
 		//SqlRequest from sql.php		
 		$result = SqlRequest("SELECT appartment password FROM users", DBUSERS, $rowCount);
-				
+		
+	echo("WHY");	
 		$curr = false;
 		for($i = 0; $i < $rowCount && !$curr; ++$i)
 		{
-			$array = mysql_fetch_array($result[i]);
-			if ($username == $result[$i]['username'])
+			var_dump($reslut[$i]["appartment"]);
+			if ($appartment == $result[$i][0])
 			{
 				$curr = $result[$i];
+				echo("found");
 			}
+			echo("whaa");
 		}
+		echo("thisFar");
 		if (!$curr)
 		{
 			PrintForm(true);
 			return;
 		}
-		if ($password == $curr['password'])
+		echo("<br>");
+		var_dump($curr['password']);
+		var_dump($password);
+		
+		if ($password != $curr["password"])
 		{
 			PrintForm(true);
 			return;
 		}
-		if ($username == "admin")
+		if ($appartment == "admin")
 		{
+			echo("admin");
 			session_unset();
-			$_SESSION['username'] = $username;
+			$_SESSION['appartment'] = $appartment;
 			$_SESSION['password'] = $curr['password'];
 			
 			header('Location: admin.php');
@@ -77,13 +86,14 @@
 		}
 		else
 		{
+			echo("AHH");
 			session_unset();
-			$_SESSION['username'] = $username;
+			$_SESSION['username'] = $appartment;
 			$_SESSION['password'] = $curr['password'];
 			
-			header('Location: bokning.php');
 			exit();
 		}
+
 		
 	}		
 	

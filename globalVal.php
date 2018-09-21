@@ -2,10 +2,10 @@
 
 if(!defined("PASSWORD"))
 {
-	define("PASSWORD", "idkDude");
-	define("USERNAME", "mysql");
+	define("PASSWORD", "aa");
+	define("USERNAME", "a");
 	define("SERVERNAME", "localhost");
-	define("DBUSERS", "users");
+	define("DBUSERS", "appdb");
 	define("ERROR", "err");
 	define("NOTHING", "nothing");
 }
