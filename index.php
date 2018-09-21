@@ -61,7 +61,7 @@
 			PrintForm(true);
 			return;
 		}
-		if (!password_verify($password, $curr['password']))
+		if ($password == $curr['password'])
 		{
 			PrintForm(true);
 			return;
