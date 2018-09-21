@@ -9,20 +9,14 @@
 	//Prints out the basic loginform
 	function PrintForm($error = false)
 	{
-		echo("<html lang=\"sv\">
-			<head>
-			<meta charset=\"UTF-8\">
-			<title>Login</title>
-			</head><body>");
+		$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>";
 		if ($error)
 		{
-			echo ("<p>Fel lägenhetsnummer eller användarnamn</p>");
+			$toPrint .= "<p>Fel lägenhetsnummer eller användarnamn</p>";
 		}
-		echo("<form action=\"\" method=\"POST\">
-			<input type=\"text\" value=\"Lägenhetsnummer\"/ name=\"appartment\">
-			<input type=\"password\" value=\"Password\" name=\"password\"/>
-			<input type=\"submit\"/>
-			</form></body></html>");
+		$toPrint .= "<form action=\"\" method=\"POST\"><input type=\"text\" value=\"Lägenhetsnummer\"/ name=\"appartment\"><input type=\"password\" value=\"Password\" name=\"password\"/><input type=\"submit\"/></form></body></html>";
+		
+		echo($toPrint);
 	}
 	
 	
@@ -54,7 +48,6 @@
 			if ($appartment == $result[$i][0])
 			{
 				$curr = $result[$i];
-				echo("found");
 			}
 		}
 		if (!$curr)
@@ -73,15 +66,15 @@
 			$_SESSION['appartment'] = $appartment;
 			$_SESSION['password'] = $curr['password'];
 			header('Location: admin.php');
-			exit();
+			return;
 		}
 		else
 		{
 			session_unset();
-			$_SESSION['username'] = $appartment;
+			$_SESSION['appartment'] = $appartment;
 			$_SESSION['password'] = $curr['password'];
 			header('Location: bokning.php');
-			exit();
+			return;
 		}
 
 		
