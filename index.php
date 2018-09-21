@@ -44,7 +44,6 @@
 		$curr = false;
 		for($i = 0; $i < $rowCount && !$curr; ++$i)
 		{
-			var_dump($reslut[$i]["appartment"]);
 			if ($appartment == $result[$i][0])
 			{
 				$curr = $result[$i];
@@ -65,7 +64,7 @@
 			session_unset();
 			$_SESSION['appartment'] = $appartment;
 			$_SESSION['password'] = $curr['password'];
-			header('Location: admin.php');
+			header("Location: admin.php");
 			return;
 		}
 		else
@@ -73,7 +72,7 @@
 			session_unset();
 			$_SESSION['appartment'] = $appartment;
 			$_SESSION['password'] = $curr['password'];
-			header('Location: bokning.php');
+			header("Location: bokning.php");
 			return;
 		}
 
