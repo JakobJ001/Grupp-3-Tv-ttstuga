@@ -3,6 +3,13 @@ include 'globalVal.php';
 include 'sql.php';
 
 
+function AlreadyBooked($booked)
+{
+	$date = $booked['date'];
+	$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>" . 
+	"<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>"
+}
+
 /*
 #####################################
 --------START OF GLOBAL CODE---------
@@ -11,7 +18,6 @@ include 'sql.php';
 
 //globalVal.php
 SessionCheck();
-
 $rowCount;
 $result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
 		
@@ -46,20 +52,32 @@ else if ($bookedDates == NOTHING)
 }
 
 $toDelete = array();
-$alreadyBooked;
+$dates = array();
+$alreadyBooked = false;
 for ($i = 0; $i < $rowCount; ++$i)
 {
-	$bDate = $bookedDates[$i]['date'];
-	if ($date > $bDate)
+	if (!$alreadyBooked)
 	{
-		$toDelete[count($toDelete)] = $bookedDates[$i]['id'];
-	}
-	else if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'])
-	{
-		$alreadyBooked = $bookedDates[$i]['id'];
+		$bDate = $bookedDates[$i]['date'];
+		if ($date > $bDate)
+		{
+			$toDelete[count($toDelete)] = $bookedDates[$i]['id'];
+		}
+		else if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'])
+		{
+			$alreadyBooked = $bookedDates[$i];
+		}
 	}
 }
-
-
-
+$worked = SqlDelete("DELETE FROM Booked WHERE id IN ", DBUSER, $toDelete);
+if (!$worked)
+{
+	echo("Någonting blev fel med databasen!");
+	return;
+}
+if ($alreadyBooked)
+{
+	AlreadyBooked($alreadyBooked);
+	return;
+}
 ?>
