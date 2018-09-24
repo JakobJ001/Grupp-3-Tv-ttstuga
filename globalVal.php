@@ -10,7 +10,7 @@ function SessionCheck()
 		exit();
 	}
 }
-
+teeee
 
 
 //All the global variables that we'll need
