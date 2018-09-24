@@ -40,6 +40,17 @@
 		$rowCount;
 		//SqlRequest from sql.php		
 		$result = SqlRequest("SELECT appartment password FROM users", DBUSERS, $rowCount);
+		           
+		if ($result == ERROR)
+		{
+			echo("Någonting blev fel");
+			return;
+		}
+		else if ($result == NOTHING)
+		{
+			echo("Någonting fel med databasen:(");
+			return;
+		}
 		
 		$curr = false;
 		for($i = 0; $i < $rowCount && !$curr; ++$i)
@@ -75,8 +86,6 @@
 			header("Location: bokning.php");
 			return;
 		}
-
-		
 	}		
 	
 ?>

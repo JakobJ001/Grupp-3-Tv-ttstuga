@@ -40,4 +40,19 @@ function CleanString($input)
 	$input = htmlspecialchars($input);
 	return $input;
 }
+
+
+function SqlDelete($query, $db, $toDelete)
+{
+	
+	//SERVERNAME USERNAME and PASSWORD are all values defined in globalVal.php
+	$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=$db", USERNAME, PASSWORD);
+	
+	$deleteString = "(";
+	for ($i = 0; i < count($toDelete); ++$i)
+	{
+		ECHO()
+		
+	}
+}
 ?>

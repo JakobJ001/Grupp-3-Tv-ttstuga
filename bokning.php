@@ -31,6 +31,35 @@ if(!$curr || $_SESSION['password'] != $curr[1])
 	return;
 }
 
+$date = new DateTime();
+$bookedDates = SqlRequest("SELECT * FROM Booked", DBUSERS, $rowCount);
+
+if ($bookedDates == ERROR)
+		{
+			echo("Någonting blev fel");
+			return;
+		}
+else if ($bookedDates == NOTHING)
+{
+	echo("Någonting fel med databasen:(");
+	return;
+}
+
+$toDelete = array();
+$alreadyBooked;
+for ($i = 0; $i < $rowCount; ++$i)
+{
+	$bDate = $bookedDates[$i]['date'];
+	if ($date > $bDate)
+	{
+		$toDelete[count($toDelete)] = $bookedDates[$i]['id'];
+	}
+	else if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'])
+	{
+		$alreadyBooked = $bookedDates[$i]['id'];
+	}
+}
+
 
 
 ?>
