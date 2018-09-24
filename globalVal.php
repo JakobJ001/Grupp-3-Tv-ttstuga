@@ -12,6 +12,7 @@ function SessionCheck()
 }
 
 
+
 //All the global variables that we'll need
 if(!defined("PASSWORD"))
 {
