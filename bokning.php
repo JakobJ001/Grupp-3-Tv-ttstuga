@@ -3,6 +3,17 @@ include 'globalVal.php';
 include 'sql.php';
 
 
+function SessionCheck()
+{
+	session_start();
+	//If no session exist
+	if(empty($_SESSION))
+	{
+		header("Location: index.php");
+		exit();
+	}
+}
+
 function AlreadyBooked($booked)
 {
 	$date = $booked['date'];
