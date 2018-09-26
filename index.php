@@ -14,7 +14,7 @@
 		{
 			$toPrint .= "<p>Fel lägenhetsnummer eller användarnamn</p>";
 		}
-		$toPrint .= "<form action=\"\" method=\"POST\"><input type=\"text\" value=\"Lägenhetsnummer\"/ name=\"appartment\"><input type=\"password\" value=\"Password\" name=\"password\"/><input type=\"submit\"/></form></body></html>";
+		$toPrint .= "<form action=\"index.php\" method=\"POST\"><input type=\"text\" value=\"Lägenhetsnummer\"/ name=\"appartment\"><input type=\"password\" value=\"Password\" name=\"password\"/><input type=\"submit\"/></form></body></html>";
 		
 		echo($toPrint);
 	}

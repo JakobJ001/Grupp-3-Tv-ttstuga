@@ -16,9 +16,11 @@ function SessionCheck()
 
 function AlreadyBooked($booked)
 {
-	$date = $booked['date'];
+	$date = new datetime($booked['date']);
 	$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>" . 
-	"<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>"
+	"<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>" . $date->format("m-d H:i:s'");
+	$toPrint .= "<p>Vill du avboka?</p><form action=\"bokning.php\" method=\"POST\"><input type=\"submit\" value=\"Avboka\"/></body></html>";
+	echo($toPrint);
 }
 
 /*
@@ -27,7 +29,6 @@ function AlreadyBooked($booked)
 #####################################
 */
 
-//globalVal.php
 SessionCheck();
 $rowCount;
 $result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
@@ -69,7 +70,7 @@ for ($i = 0; $i < $rowCount; ++$i)
 {
 	if (!$alreadyBooked)
 	{
-		$bDate = $bookedDates[$i]['date'];
+		$bDate = new datetime($bookedDates[$i]['date']);
 		if ($date > $bDate)
 		{
 			$toDelete[count($toDelete)] = $bookedDates[$i]['id'];
@@ -91,4 +92,9 @@ if ($alreadyBooked)
 	AlreadyBooked($alreadyBooked);
 	return;
 }
+
+$day = date->format("W");
+
+
+
 ?>
