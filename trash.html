@@ -1,5 +1,3 @@
-
-
 <html>
 <meta charset="UTF-8">
 <head>
@@ -11,6 +9,10 @@ table
 {
 	width: 50%;
 	margin-top: 1%;
+}
+img
+{
+  height: 100%;
 }
 
 tr, th
@@ -39,19 +41,16 @@ tr, th
 	<th>Radera</th>
 </tr>
 <tr>
-		<th>1</th>
+		<form action="admin.php" method="POST">
+		<th name="appartment">1</th>
 		<th>John</th>
-		<th><img src="https://cdn.dribbble.com/users/199982/screenshots/4044699/furkan-avatar-dribbble.png"/></th>
+		<th><img src="http://www.carderator.com/assets/avatar_placeholder_small.png"/></th>
 		<th>2018-10-25 13:54:4</th>
-		<th><input type="button" value="Radera"/>
+		<th><input type="submit" value="Radera" name="remove"/></th>
+		</form>
 </tr>
-	
 </table>
-
 </body>
-
 <script>
-
-
 </script>
 </html>
