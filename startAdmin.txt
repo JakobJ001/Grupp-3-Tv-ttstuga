@@ -43,7 +43,7 @@ tr, th
 <th>Lägg till</th>
 </tr>
 <tr>
-<form>
+<form enctype="multipart/form-data" method="POST">
 <th><input type="text" name="appartment"/></th>
 <th><input type="text" name="name"/></th>
 <th><input type="file" name="file"/></th>
