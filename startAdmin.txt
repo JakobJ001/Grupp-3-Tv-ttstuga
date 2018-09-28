@@ -1,0 +1,61 @@
+<html>
+<meta charset="UTF-8">
+<head>
+<title>Trash</title>
+</head>
+<style>
+
+table 
+{
+	width: 50%;
+	margin-top: 1%;
+}
+img
+{
+  height: 20%;
+  object-fit: fill;
+}
+#appartment
+{
+	width: 50%;
+}
+
+tr, th
+{
+	width: 20%;
+	border:  1px solid black;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+</style>
+<body>
+
+
+<p>Lägg till ny användare</p>
+<table>
+<tr>
+<th>Lägenhetsnummer</th>
+<th>Namn</th>
+<th>Bild</th>
+<th>Lägg till</th>
+</tr>
+<tr>
+<form>
+<th><input type="text" name="appartment"/></th>
+<th><input type="text" name="name"/></th>
+<th><input type="file" name="file"/></th>
+<th><input type="button" value="Lägg till"/></th>
+</tr>
+</form>
+</table>
+<table>
+<tr>
+	<th>Lägenhet</th>
+	<th>Namn</th>
+	<th>Bild</th>
+	<th>Bokad tid</th>
+	<th>Radera</th>
+</tr>

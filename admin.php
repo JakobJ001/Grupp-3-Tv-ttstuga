@@ -4,8 +4,16 @@ include 'sql.php';
 
 function  Print($bool, $results)
 {
-	$toPrint = file_get_contents(adminStart.txt);
+	$toPrint = file_get_contents(startAdmin.txt);
 	
+	for($i = 0; i < $result; ++$i)
+	{
+		$toPrint .= "<tr><form action=\"admin\" method=\"POST\"><th name=\"appartment\">" . $result[$i]['appartment'] . "</th>";
+		$toPrint .= "<th>" . $result[$i]['name'] . "</th>";
+		$toPrint .= "<th><img src=\"" . $result[$i]['picture'] ."\"/></th>";
+		$toPrint .= "<th>" . $result[$i]['booked'] . "</th>";
+		$toPrint .= "<th><input type=\"submit\" value=\"Radera\" name=\"remove\"/></th></form></tr>";
+	}
 }
 
 
