@@ -2,6 +2,12 @@
 include 'globalVal.php';
 include 'sql.php';
 
+function  Print($bool, $results)
+{
+	$toPrint = file_get_contents(adminStart.txt);
+	
+}
+
 
 function SessionCheck()
 {
@@ -54,9 +60,6 @@ if (!empty($_POST))
 	}	
 }
 
-$toPrint = "<html><meta charset=\"UTF-8\"><head><title>Admin</title>";
-
-
-
+Print(false, $result);
 
 ?>

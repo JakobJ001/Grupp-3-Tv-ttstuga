@@ -12,7 +12,12 @@ table
 }
 img
 {
-  height: 100%;
+  height: 20%;
+  object-fit: fill;
+}
+#appartment
+{
+	width: 50%;
 }
 
 tr, th
@@ -30,8 +35,22 @@ tr, th
 
 
 <p>Lägg till ny användare</p>
-<input type="button" value="Lägg till"/>
-
+<table>
+<tr>
+<th>Lägenhetsnummer</th>
+<th>Namn</th>
+<th>Bild</th>
+<th>Lägg till</th>
+</tr>
+<tr>
+<form>
+<th><input type="text" name="appartment"/></th>
+<th><input type="text" name="name"/></th>
+<th><input type="file" name="file"/></th>
+<th><input type="button" value="Lägg till"/></th>
+</tr>
+</form>
+</table>
 <table>
 <tr>
 	<th>Lägenhet</th>

@@ -13,12 +13,12 @@ function SessionCheck()
 		exit();
 	}
 }
-
+//If the user has already booked
 function AlreadyBooked($booked)
 {
 	$date = new datetime($booked['date']);
 	$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>" . 
-	"<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>" . $date->format("m-d H:i:s'");
+	"<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>" . $date->format("D-m-d H:i'");
 	$toPrint .= "<p>Vill du avboka?</p><form action=\"bokning.php\" method=\"POST\"><input type=\"submit\" value=\"Avboka\"/></body></html>";
 	echo($toPrint);
 }
