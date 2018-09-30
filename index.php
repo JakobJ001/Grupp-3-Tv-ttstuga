@@ -67,6 +67,8 @@
 		}
 		if ($password != $curr["password"])
 		{
+			echo($password);
+			echo($curr["password"])
 			PrintForm(true);
 			return;
 		}
