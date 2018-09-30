@@ -93,7 +93,7 @@ if ($alreadyBooked)
 	return;
 }
 
-$day = date->format("W");
+$day = $date->format("W");
 
 
 
