@@ -39,7 +39,7 @@
 				
 		$rowCount;
 		//SqlRequest from sql.php		
-		$result = SqlRequest("SELECT appartment password FROM users", DBUSERS, $rowCount);
+		$result = SqlRequest("SELECT appartment, password FROM users", DBUSERS, $rowCount);
 		           
 		if ($result == ERROR)
 		{
@@ -68,7 +68,7 @@
 		if ($password != $curr["password"])
 		{
 			echo($password);
-			echo($curr["password"])
+			echo($curr["password"]);
 			PrintForm(true);
 			return;
 		}
