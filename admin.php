@@ -47,7 +47,7 @@ function SetupFile($file, $name)
 	fclose($writeToo);
 	return $filePath;
 }
-
+//Deletes a user
 function DeleteUser()
 {
 	$appartment = $_POST['appartment'];
@@ -59,13 +59,13 @@ function DeleteUser()
 		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSER, USERNAME, PASSWORD);
 		
 		
-		if (!($smtm = $connect->prepare($query)))
+		if (!($stmt = $connect->prepare($query)))
 		{
-			throw;
+			return "Couldn't prepare query";
 		}
-		if (!($smtm->execute()))
+		if (!($stmt->execute()))
 		{
-			throw;
+			return "Couldn't execute query";
 		}
 		return "User deleted";
 	}
@@ -96,11 +96,11 @@ function AddUser()
 		
 		if (!($smtm = $connect->prepare($query)))
 		{
-			throw;
+			return "Couldn't prepare query";
 		}
 		if (!($smtm->execute()))
 		{
-			throw;
+			return "Couldn't prepare query";
 		}
 		return "User added";
 	}
@@ -112,7 +112,7 @@ function AddUser()
 }
 
 
-function Print($results, $toAlert)
+function PrintSite($results, $toAlert)
 {
 	$toPrint = file_get_contents(startAdmin.txt);
 	
@@ -137,17 +137,22 @@ function Print($results, $toAlert)
 }
 
 
+//Checking if there's a valid session
 function SessionCheck()
 {
 	session_start();
 	//If no session exist
-	if(empty($_SESSION))
+	if(isset($_SESSION['password']))
 	{
 		header("Location: index.php");
 		exit();
 	}
 }
 
+
+/*------------------------
+---START OF GLOBAL CODE---
+------------------------*/
 
 SessionCheck();
 $toAlert = NULL;
@@ -165,7 +170,7 @@ if (!empty($_POST))
 }
 
 
-$rowCount;
+$rowCount = "";
 $result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
 		
 $curr = false;
@@ -185,6 +190,6 @@ if(!$curr || $_SESSION['password'] != $curr[1] && $_SESSION['password'] == "admi
 }
 
 
-Print($result, $toAlert);
+PrintSite($result, $toAlert);
 
 ?>
