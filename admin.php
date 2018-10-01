@@ -52,11 +52,11 @@ function DeleteUser()
 {
 	$appartment = $_POST['appartment'];
 	
-	$query = "DELETE FROM users WHERE appartment IN $appartment";
+	$query = "DELETE FROM users WHERE appartment = $appartment";
 
 	try
 	{
-		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSER, USERNAME, PASSWORD);
+		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
 		
 		
 		if (!($stmt = $connect->prepare($query)))
@@ -65,7 +65,7 @@ function DeleteUser()
 		}
 		if (!($stmt->execute()))
 		{
-			return "Couldn't execute query";
+			return "Couldn't execute query $query";
 		}
 		return "User deleted";
 	}
@@ -112,19 +112,17 @@ function AddUser()
 }
 
 
-function PrintSite($results, $toAlert)
+function PrintSite($result, $toAlert)
 {
-	$toPrint = file_get_contents(startAdmin.txt);
-	
-	for($i = 0; i < $result; ++$i)
+	$toPrint = file_get_contents("startAdmin.txt");
+	for($i = 0; $i < count($result); ++$i)
 	{
-		$toPrint .= "<tr><form action=\"admin\" method=\"POST\" enctype=\"multipart/form-data\"><th name=\"appartment\">" . $result[$i]['appartment'] . "</th>";
-		$toPrint .= "<th>" . $result[$i]['name'] . "</th>";
+		$toPrint .= "<tr><form action=\"admin.php\" method=\"POST\" ><th><input type=\"text\" readonly=\"readonly\" name=\"appartment\" value=\"" . $result[$i]['appartment']. "\"/></th>";
+		$toPrint .= "<th>" . $result[$i]['name'] . "</th>"; 
 		$toPrint .= "<th><img src=\"" . $result[$i]['picture'] ."\"/></th>";
 		$toPrint .= "<th>" . $result[$i]['booked'] . "</th>";
 		$toPrint .= "<th><input type=\"submit\" value=\"Radera\" name=\"remove\"/></th></form></tr>";
 	}
-	
 	if ($toAlert)
 	{
 		$toPrint .= "</table></body><script>alert(\"" . $toAlert . "\");</script></html>";
@@ -142,7 +140,7 @@ function SessionCheck()
 {
 	session_start();
 	//If no session exist
-	if(isset($_SESSION['password']))
+	if(!isset($_SESSION['password']))
 	{
 		header("Location: index.php");
 		exit();
@@ -159,11 +157,12 @@ $toAlert = NULL;
 
 if (!empty($_POST))
 {
-	if (isset($_POST['addUser']))
+	if (isset($_POST['add']))
 	{
 		$toAlert = AddUser();
 	}
-	if (isset($_POST['deleteUser']))
+	
+	if (isset($_POST['remove']))
 	{
 		$toAlert = DeleteUser();
 	}	
@@ -183,13 +182,13 @@ for($i = 0; $i < $rowCount && !$curr; ++$i)
 	}
 }
 //Verifying that the appartmentnumber and password are both valid
-if(!$curr || $_SESSION['password'] != $curr[1] && $_SESSION['password'] == "admin")
+if(!$curr || $_SESSION['password'] != $curr['password'] && $_SESSION['password'] == "admin")
 {
 	header("Location: index.php");
 	return;
 }
 
-
+echo("password");
 PrintSite($result, $toAlert);
 
 ?>

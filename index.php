@@ -24,7 +24,11 @@
 	#####################################
 	--------START OF GLOBAL CODE---------
 	#####################################
-	*/
+	 */
+
+	var_dump($_SESSION);
+
+
 	//If no post call has been made
 	if (empty($_POST))
 	{
