@@ -1,4 +1,4 @@
-<html>
+Ôªø<html>
 <meta charset="UTF-8">
 <head>
 <title>Trash</title>
@@ -34,26 +34,26 @@ tr, th
 <body>
 
 
-<p>L‰gg till ny anv‰ndare</p>
+<p>L√§gg till ny anv√§ndare</p>
+<form action="admin.php" name="form" enctype="multipart/form-data" method="POST">
 <table>
 <tr>
-<th>L‰genhetsnummer</th>
+<th>L√§genhetsnummer</th>
 <th>Namn</th>
 <th>Bild</th>
-<th>L‰gg till</th>
+<th>L√§gg till</th>
 </tr>
-<form action="admin.php" name="form" enctype="multipart/form-data" method="POST">
 <tr>
 <th><input type="text" name="appartment"/></th>
 <th><input type="text" name="name"/></th>
 <th><input type="file" name="file"/></th>
-<th><input type="button" name="add" value="L‰gg till"/></th>
+<th><input type="button" name="add" value="L√§gg till"/></th>
 </tr>
-</form>
 </table>
+</form>
 <table>
 <tr>
-	<th>L‰genhet</th>
+	<th>L√§genhet</th>
 	<th>Namn</th>
 	<th>Bild</th>
 	<th>Bokad tid</th>

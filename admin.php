@@ -117,11 +117,12 @@ function PrintSite($result, $toAlert)
 	$toPrint = file_get_contents("startAdmin.txt");
 	for($i = 0; $i < count($result); ++$i)
 	{
-		$toPrint .= "<tr><form action=\"admin.php\" method=\"POST\" ><th><input type=\"text\" readonly=\"readonly\" name=\"appartment\" value=\"" . $result[$i]['appartment']. "\"/></th>";
+		$toPrint .= "<tr><th>" . $result[$i]['appartment']. "</th>";
 		$toPrint .= "<th>" . $result[$i]['name'] . "</th>"; 
 		$toPrint .= "<th><img src=\"" . $result[$i]['picture'] ."\"/></th>";
 		$toPrint .= "<th>" . $result[$i]['booked'] . "</th>";
-		$toPrint .= "<th><input type=\"submit\" value=\"Radera\" name=\"remove\"/></th></form></tr>";
+		$toPrint .= "<th><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" value=\"Radera\" name=\"remove\"/>";
+		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\"/></th></form></tr>";
 	}
 	if ($toAlert)
 	{
