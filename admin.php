@@ -5,41 +5,47 @@ include 'sql.php';
 function SetupFile($file, $name)
 {
 	$fileName = $file['name'];
-	
+	echo($fileName);
 	$fileType = "";
 	$keepGoing = true;
 	
 	for ($i = strlen($fileName); $i != 0 && $keepGoing;)
 	{
-		if ($fileName[--$i] != ".")
+		--$i;
+		if ($fileName[$i] != ".")
 		{
-			$filetype .= $fileName[--$i];
+			$fileType .= $fileName[$i];
 		}
 		else
 		{
 			$keepGoing = false;
 		}
+		echo($i);
 	}
-	
+
+	echo("for loop done");
 	if ($keepGoing)
 	{
+		var_dump($fileName);
 		return false;
 	}
-	
+	echo("keep going true");
 	$check = array("gnp", "gpj", "gepj", "pmb");
 	$type = false;
-	for ($i = 0; i < 4 && !$type; ++$i)
+	for ($i = 0; $i < 4 && !$type; ++$i)
 	{
 		if ($fileType == $check[$i])
 		{
 			$type = strrev($check[$i]);
 		}
 	}
-	
+	echo("second for loop done");
 	if (!$type)
 	{
+		var_dump($fileType);
 		return false;
 	}
+	echo("type is right");
 	$tempFile = file_get_contents($file['tmp_name']);
 	$filePath = "pic/" . $name . $type;
 	$writeToo = fopen($filePath, "w");
@@ -79,19 +85,21 @@ function AddUser()
 {
 	$appartment = $_POST['appartment'];
 	$name = $_POST['name'];
-	$filePath = SetupFile($_FILE['file']);
-	$password = password_hash($_POST['password']);
+	$filePath = SetupFile($_FILES['file']);
+	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	
-	
+	var_dump($_POST['password']);
+	var_dump($password);
 	if (!$filePath)
 	{
 		return "Something's wrong with the file";
 	}
 	
-	$query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES ($appartment ,$password ,$name , $filePath, NULL, NULL)";
+	$query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES (\'$appartment\' ,\'$password \', \'$name \', \'$filePath\', \'NULL\');";
 	try
 	{
-		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSER, USERNAME, PASSWORD);
+		echo($query);
+		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
 		
 		
 		if (!($smtm = $connect->prepare($query)))
@@ -149,9 +157,11 @@ function SessionCheck()
 }
 
 
-/*------------------------
----START OF GLOBAL CODE---
-------------------------*/
+/*
+	#####################################
+	--------START OF GLOBAL CODE---------
+	#####################################
+*/
 
 SessionCheck();
 $toAlert = NULL;
@@ -193,3 +203,4 @@ echo("password");
 PrintSite($result, $toAlert);
 
 ?>
+ 
