@@ -42,8 +42,8 @@ function SetupFile($file, $name)
 		return false;
 	}
 	$tempFile = file_get_contents($file['tmp_name']);
-	$filePath = "/var/www/html/Grupp-3-Tv-ttstuga/pic/" . $fileName;
-	$writeToo = fopen($filePath, "w");
+	$filePath = "pic/" . $fileName;
+	$writeToo = fopen("/var/www/html/Grupp-3-Tv-ttstuga/" . $filePath, "w");
 	fwrite($writeToo, $tempFile);
 	fclose($writeToo);
 	return $filePath;
@@ -53,7 +53,7 @@ function DeleteUser()
 {
 	$appartment = $_POST['appartment'];
 	
-	$query = "DELETE FROM users WHERE appartment = $appartment";
+	$query = "DELETE FROM users WHERE appartment = '$appartment'";
 
 	try
 	{
@@ -125,7 +125,7 @@ function PrintSite($result, $toAlert)
 		$toPrint .= "<th><img src=\"" . $result[$i]['picture'] ."\"/></th>";
 		$toPrint .= "<th>" . $result[$i]['booked'] . "</th>";
 		$toPrint .= "<th><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" value=\"Radera\" name=\"remove\"/>";
-		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\"/></th></form></tr>";
+		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\" name=\"appartment\"/></th></form></tr>";
 	}
 	if ($toAlert)
 	{
