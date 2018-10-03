@@ -69,7 +69,7 @@
 			PrintForm(true);
 			return;
 		}
-		if ($password != $curr["password"])
+		if (password_verify($password , $curr["password"]))
 		{
 			echo($password);
 			echo($curr["password"]);
