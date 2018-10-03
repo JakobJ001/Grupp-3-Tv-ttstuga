@@ -47,7 +47,7 @@ function SetupFile($file, $name)
 	}
 	echo("type is right");
 	$tempFile = file_get_contents($file['tmp_name']);
-	$filePath = "pic/" . $name . $type;
+	$filePath = "pic/" . $fileName . $type;
 	$writeToo = fopen($filePath, "w");
 	fwrite($writeToo, $tempFile);
 	fclose($writeToo);
