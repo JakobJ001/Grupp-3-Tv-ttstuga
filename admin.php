@@ -5,7 +5,6 @@ include 'sql.php';
 function SetupFile($file, $name)
 {
 	$fileName = $file['name'];
-	echo($fileName);
 	$fileType = "";
 	$keepGoing = true;
 	
@@ -23,13 +22,11 @@ function SetupFile($file, $name)
 		echo($i);
 	}
 
-	echo("for loop done");
 	if ($keepGoing)
 	{
 		var_dump($fileName);
 		return false;
 	}
-	echo("keep going true");
 	$check = array("gnp", "gpj", "gepj", "pmb");
 	$type = false;
 	for ($i = 0; $i < 4 && !$type; ++$i)
@@ -39,15 +36,13 @@ function SetupFile($file, $name)
 			$type = strrev($check[$i]);
 		}
 	}
-	echo("second for loop done");
 	if (!$type)
 	{
 		var_dump($fileType);
 		return false;
 	}
-	echo("type is right");
 	$tempFile = file_get_contents($file['tmp_name']);
-	$filePath = "pic/" . $fileName . $type;
+	$filePath = "/var/www/html/Grupp-3-Tv-ttstuga/pic/" . $fileName;
 	$writeToo = fopen($filePath, "w");
 	fwrite($writeToo, $tempFile);
 	fclose($writeToo);
