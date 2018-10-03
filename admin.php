@@ -95,7 +95,7 @@ function AddUser()
 		return "Something's wrong with the file";
 	}
 	
-	$query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES (\'$appartment\' ,\'$password \', \'$name \', \'$filePath\', \'NULL\');";
+	$query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES ('$appartment' ,'$password', '$name','$filePath', 'NULL');";
 	try
 	{
 		echo($query);

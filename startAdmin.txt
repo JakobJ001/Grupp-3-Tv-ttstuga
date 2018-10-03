@@ -40,14 +40,16 @@ tr, th
 <tr>
 <th>Lägenhetsnummer</th>
 <th>Namn</th>
+<th>Lösenord</th>
 <th>Bild</th>
 <th>Lägg till</th>
 </tr>
 <tr>
 <th><input type="text" name="appartment"/></th>
 <th><input type="text" name="name"/></th>
+<th><input type="password" name="password"/></th>
 <th><input type="file" name="file"/></th>
-<th><input type="button" name="add" value="Lägg till"/></th>
+<th><input type="submit" name="add" value="Lägg till"/></th>
 </tr>
 </table>
 </form>
