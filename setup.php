@@ -6,7 +6,7 @@ $rowCount = "";
 $result = SqlRequest("SELECT appartment FROM users", DBUSERS, $rowCount);
 
 $found = false;
-for ($i = 0; $i < $rowCount && !$found)
+for ($i = 0; $i < $rowCount && !$found; ++$i)
 {
 	if ($rowCount['appartment'] == "admin")
 	{
@@ -21,7 +21,7 @@ if ($found)
 
 $appartment = "admin";
 $name = "admin";
-$password = password_hash("admin");
+$password = password_hash("admin", PASSWORD_DEFAULT);
 $filePath = "pic/admin.jpg";
 
 $query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES ('$appartment' ,'$password', '$name','$filePath', 'NULL');";
