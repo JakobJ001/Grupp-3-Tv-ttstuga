@@ -27,7 +27,6 @@ $filePath = "pic/admin.jpg";
 $query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES ('$appartment' ,'$password', '$name','$filePath', 'NULL');";
 	try
 	{
-		echo($query);
 		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
 		
 		
