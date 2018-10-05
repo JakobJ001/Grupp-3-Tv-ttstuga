@@ -50,18 +50,13 @@ if(!$curr || $_SESSION['password'] != $curr[1])
 }
 
 $date = new DateTime();
-$bookedDates = SqlRequest("SELECT * FROM Booked", DBUSERS, $rowCount);
+$bookedDates = SqlRequest("SELECT * FROM booked", DBUSERS, $rowCount);
 
 if ($bookedDates == ERROR)
 		{
 			echo("Någonting blev fel");
 			return;
 		}
-else if ($bookedDates == NOTHING)
-{
-	echo("Någonting fel med databasen:(");
-	return;
-}
 
 $toDelete = array();
 $dates = array();

@@ -26,7 +26,6 @@
 	#####################################
 	 */
 
-	var_dump($_SESSION);
 
 
 	//If no post call has been made
@@ -37,50 +36,35 @@
 	}
 	else
 	{
-		
+		//PASSWORD START
 		$appartment = CleanString($_POST['appartment']);
 		$password = CleanString($_POST['password']);
-				
-		$rowCount;
-		//SqlRequest from sql.php		
-		$result = SqlRequest("SELECT appartment, password FROM users", DBUSERS, $rowCount);
-		           
-		if ($result == ERROR)
-		{
-			echo("Någonting blev fel");
-			return;
-		}
-		else if ($result == NOTHING)
-		{
-			echo("Någonting fel med databasen:(");
-			return;
-		}
 		
-		$curr = false;
-		for($i = 0; $i < $rowCount && !$curr; ++$i)
-		{
-			if ($appartment == $result[$i][0])
-			{
-				$curr = $result[$i];
-			}
-		}
-		if (!$curr)
-		{
-			PrintForm(true);
+		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=appdb", USERNAME, PASSWORD);
+		if (!($stmt = $connect->prepare("SELECT * FROM users WHERE appartment = '$appartment'"))) 			
+		{	
 			return;
 		}
-		if (password_verify($password , $curr["password"]))
+		if (!$stmt->execute())
 		{
+			return;
+		}
+		$user =  $stmt->fetch();
+		
+		if (!password_verify($password , $user['password']))
+		{
+			var_dump($user);
 			echo($password);
 			echo($curr["password"]);
 			PrintForm(true);
 			return;
 		}
+		//PASSWORD END
 		if ($appartment == "admin")
 		{
 			session_unset();
 			$_SESSION['appartment'] = $appartment;
-			$_SESSION['password'] = $curr['password'];
+			$_SESSION['password'] = $user['password'];
 			header("Location: admin.php");
 			return;
 		}
@@ -88,10 +72,11 @@
 		{
 			session_unset();
 			$_SESSION['appartment'] = $appartment;
-			$_SESSION['password'] = $curr['password'];
+			$_SESSION['password'] = $user['password'];
 			header("Location: bokning.php");
 			return;
 		}
 	}		
 	
 ?>
+
