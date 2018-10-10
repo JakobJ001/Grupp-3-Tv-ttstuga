@@ -45,18 +45,24 @@ function CleanString($input)
 function SqlDelete($query, $db, $toDelete)
 {
 	
+	echo("ahh");
 	try{
 		//SERVERNAME USERNAME and PASSWORD are all values defined in globalVal.php
 		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=$db", USERNAME, PASSWORD);
 		
+		echo("WHYY");
 		$deleteString = "(";
-		for ($i = 0; i < count($toDelete); ++$i)
+		for ($i = 0; $i < count($toDelete); ++$i)
 		{
-			$deleteString .= "\'" . $toDelete[$i] . "\',";
+			echo("kys2");
+			$deleteString .= "'" . $toDelete[$i] . "',";
 		}
 		$deleteString = substr($deleteString, 0, -1);
 		$deleteString .= ")";
-		$query .= $toDelete;
+		$query .= $deleteString;
+		
+		
+		echo("kys");
 		
 		if (!($stmt = $connect->prepare($query))) 				
 		{	
@@ -65,12 +71,15 @@ function SqlDelete($query, $db, $toDelete)
 		//We do not want to continue if something goes wrong
 		if(!($stmt->execute()))
 		{
+			echo($query);
 			return false;
 		}
+		echo($query);
 		return true;
 	}
 	catch (EXCEPTION $e)
 	{
+		echo($query);
 		return false;
 	}
 }

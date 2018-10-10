@@ -76,12 +76,18 @@ for ($i = 0; $i < $rowCount; ++$i)
 		}
 	}
 }
-$worked = SqlDelete("DELETE FROM Booked WHERE id IN ", DBUSER, $toDelete);
-if (!$worked)
+if (count($toDelete) > 0)
 {
-	echo("Någonting blev fel med databasen!");
-	return;
+	var_dump($toDelete);
+	$worked = SqlDelete("DELETE FROM booked WHERE id IN ", DBUSERS, $toDelete);
+	if (!$worked)
+	{
+		echo("Någonting blev fel med databasen!");
+		return;
+	}
+	var_dump($worked);
 }
+
 if ($alreadyBooked)
 {
 	AlreadyBooked($alreadyBooked);

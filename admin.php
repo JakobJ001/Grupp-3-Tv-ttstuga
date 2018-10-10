@@ -57,19 +57,30 @@ function UpdateUser()
 {
 	$query = "UPDATE users SET ";
 	$updateNeeded = false;
-	if (isset($_POST['name']))
+	$second = false;
+	if (!empty($_POST['name']))
 	{
-		$query .= "name='$_POST['name']' ";
+		$query .= "name='" . $_POST['name']."' ";
 		$updateNeeded = true;
+		$second = true;
 	}
-	if (isset($_FILES['file'])
+	if (!empty($_POST['file']))
 	{
+		if ($second)
+		{
+			$query .= ", ";
+		}
 		$filePath = SetupFile($_FILES['file']);
 		$query .= "picture='$filePath' ";
 		$updateNeeded = true;
+		$second = true;
 	}
-	if (isset($_POST['password']))
+	if (!empty($_POST['password']))
 	{
+		if ($second)
+		{
+			$query .= ", ";
+		}
 		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$query .= "password='$password' ";
 		$updateNeeded = true;
@@ -77,7 +88,7 @@ function UpdateUser()
 	
 	$appartment = $_POST['appartment'];
 	
-	$query = "WHERE appartment='$appartment'";
+	$query .= "WHERE appartment='$appartment'";
 	
 	if (!$updateNeeded)
 	{
@@ -97,7 +108,7 @@ function UpdateUser()
 		{
 			return "Couldn't execute query $query";
 		}
-		return "User deleted";
+		return "User updated";
 	}
 	catch (EXCEPTION $e)
 	{
