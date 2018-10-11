@@ -22,7 +22,7 @@ if ($found)
 $appartment = "admin";
 $name = "admin";
 $password = password_hash("admin", PASSWORD_DEFAULT);
-$filePath = "pic/admin.jpg";
+$filePath = "pic/admin.png";
 
 $query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES ('$appartment' ,'$password', '$name','$filePath', 'NULL');";
 	try
