@@ -2,6 +2,41 @@
 include 'globalVal.php';
 include 'sql.php';
 
+//Removes a booked date
+function RemoveBooking()
+{
+	if (!isset($_POST['id']))
+	{
+		return "Fel med post";
+	}
+	$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=appdb", USERNAME, PASSWORD);
+	if (!($stmt = $connect->prepare("SELECT * FROM booked WHERE id='$_POST['id']'"))) 			
+	{	
+		return "Kunde inte ansluta till databasen";
+	}
+	if (!$stmt->execute())
+	{
+		return "Kunde inte utföra query";
+	}
+	$booking =  $stmt->fetch();
+	
+	//If it's the wrong user somehow
+	if ($booking['appartment'] != $_SESSION['appartment'])
+	{
+		return "Fel med kontot, prova att logga in och ut";
+	}
+	
+	$toDelete = array($booking['id']);
+	
+	$worked = SqlDelete("DELETE FROM booked WHERE id IN ", DBUSERS, $toDelete);
+	if (!$worked)
+	{
+		return "Kunde inte ta bort bokningen";
+	}
+	
+	return true;
+}
+
 
 function SessionCheck()
 {
@@ -17,9 +52,10 @@ function SessionCheck()
 function AlreadyBooked($booked)
 {
 	$date = new datetime($booked['date']);
-	$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>" . 
-	"<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>" . $date->format("D-m-d H:i'");
-	$toPrint .= "<p>Vill du avboka?</p><form action=\"bokning.php\" method=\"POST\"><input type=\"submit\" value=\"Avboka\"/></body></html>";
+	$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>"; 
+	$toPrint .= "<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>" . $date->format("Y-m-d H:i:s");
+	$toPrint .= "<p>Vill du avboka?</p><form action=\"bokning.php\" method=\"POST\"><input type=\"HIDDEN\" value=\"" . $booked['id']. "\" name=\"id\"/>";
+	$toPrint .= "<input type=\"submit\" name=\"unbook\" value=\"Avboka\"/></body></html>";
 	echo($toPrint);
 }
 
@@ -30,6 +66,17 @@ function AlreadyBooked($booked)
 */
 
 SessionCheck();
+
+if (isset($_POST['unbook']))
+{
+	$value = RemoveBooking();
+	if ($value != true)
+	{
+		echo($value);
+		return;
+	}
+}
+
 $rowCount;
 $result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
 		
@@ -49,18 +96,21 @@ if(!$curr || $_SESSION['password'] != $curr[1])
 	return;
 }
 
+//Current date
 $date = new DateTime();
-$bookedDates = SqlRequest("SELECT * FROM booked", DBUSERS, $rowCount);
 
+//Gets a list of all dates
+$bookedDates = SqlRequest("SELECT * FROM booked", DBUSERS, $rowCount);
 if ($bookedDates == ERROR)
-		{
-			echo("Någonting blev fel");
-			return;
-		}
+{
+	echo("Någonting blev fel");
+	return;
+}
 
 $toDelete = array();
 $dates = array();
 $alreadyBooked = false;
+//Checks if any of the booked dates have already been
 for ($i = 0; $i < $rowCount; ++$i)
 {
 	if (!$alreadyBooked)
@@ -76,25 +126,22 @@ for ($i = 0; $i < $rowCount; ++$i)
 		}
 	}
 }
+//Removes the booked dates in need of deletion
 if (count($toDelete) > 0)
 {
-	var_dump($toDelete);
 	$worked = SqlDelete("DELETE FROM booked WHERE id IN ", DBUSERS, $toDelete);
 	if (!$worked)
 	{
 		echo("Någonting blev fel med databasen!");
 		return;
 	}
-	var_dump($worked);
 }
 
-if ($alreadyBooked)
+if (true)
 {
 	AlreadyBooked($alreadyBooked);
 	return;
 }
-
-$day = $date->format("W");
 
 
 

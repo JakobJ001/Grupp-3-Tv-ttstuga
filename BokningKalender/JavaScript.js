@@ -29,4 +29,13 @@ b5.onclick = function() {
      b2.style.background = "green";   
 }
 
+var date = new Date();
+
+var currDay = date.prototype.getDay();
+
+
+
+
+
+
 });
