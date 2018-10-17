@@ -2,6 +2,36 @@
 include 'globalVal.php';
 include 'sql.php';
 
+//Book a time
+function Book()
+{
+	$time = new DateTime($_POST['date']);
+	$appartment = $_SESSION['appartment'];
+	
+	$query = "INSERT INTO booked (date, appartment) VALUES ('$date->format("Y-m-d H:i:s")', '$appartment')";
+	
+	try
+	{
+		
+		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
+		
+		
+		if (!($smtm = $connect->prepare($query)))
+		{
+			return "Kunde inte ansluta till sql server";
+		}
+		if (!($smtm->execute()))
+		{
+			return "Kunde inte lägga till";
+		}
+		return "Tid bookad";
+	}
+	catch
+	{
+		return "Kunde inte booka";
+	}
+}
+
 //Removes a booked date
 function RemoveBooking()
 {
@@ -37,7 +67,7 @@ function RemoveBooking()
 	return true;
 }
 
-
+//Checking for a session
 function SessionCheck()
 {
 	session_start();
@@ -70,6 +100,15 @@ SessionCheck();
 if (isset($_POST['unbook']))
 {
 	$value = RemoveBooking();
+	if ($value != true)
+	{
+		echo($value);
+		return;
+	}
+}
+else if (isset($_POST['book']))
+{
+	$value = Book();
 	if ($value != true)
 	{
 		echo($value);
@@ -137,7 +176,7 @@ if (count($toDelete) > 0)
 	}
 }
 
-if (true)
+if ($alreadyBooked)
 {
 	AlreadyBooked($alreadyBooked);
 	return;
