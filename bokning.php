@@ -8,7 +8,7 @@ function Book()
 	$time = new DateTime($_POST['date']);
 	$appartment = $_SESSION['appartment'];
 	
-	$query = "INSERT INTO booked (date, appartment) VALUES ('$date->format("Y-m-d H:i:s")', '$appartment')";
+	$query = "INSERT INTO booked (date, appartment) VALUES ('" . $time->format("Y-m-d H:i:s")."', '$appartment')";
 	
 	try
 	{
@@ -26,7 +26,7 @@ function Book()
 		}
 		return "Tid bookad";
 	}
-	catch
+	catch (EXCEPTION $e)
 	{
 		return "Kunde inte booka";
 	}
@@ -35,25 +35,9 @@ function Book()
 //Removes a booked date
 function RemoveBooking()
 {
-	if (!isset($_POST['id']))
+	if(!isset($_POST['id']))
 	{
 		return "Fel med post";
-	}
-	$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=appdb", USERNAME, PASSWORD);
-	if (!($stmt = $connect->prepare("SELECT * FROM booked WHERE id='$_POST['id']'"))) 			
-	{	
-		return "Kunde inte ansluta till databasen";
-	}
-	if (!$stmt->execute())
-	{
-		return "Kunde inte utföra query";
-	}
-	$booking =  $stmt->fetch();
-	
-	//If it's the wrong user somehow
-	if ($booking['appartment'] != $_SESSION['appartment'])
-	{
-		return "Fel med kontot, prova att logga in och ut";
 	}
 	
 	$toDelete = array($booking['id']);
