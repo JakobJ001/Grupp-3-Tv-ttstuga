@@ -10,6 +10,8 @@ var bokingInfo = document.getElementById("bookingDIV");
 bokingInfo.style.display = "none";
 
 */
+
+var btnArr = [];
 var offset = 0;
 var thisDate = new Date();
 ButtonSetup("sun", 0);
@@ -25,6 +27,16 @@ function ButtonHandling(pressedButton, time, day){
   	if (pressedButton.value == "Bokad")
 	{
 		return;
+	}
+	
+	for (var i = 0; i < btnArr.length; ++i)
+	{
+		if (pressedButton != btnArr[i] && btnArr[i].value != "Bokad")
+		{
+			btnArr[i].classList.remove("btn-info");
+			btnArr[i].classList.add("btn-success");
+			btnArr[i].value = "Icke-bokad";
+		}
 	}
 	pressedButton.classList.remove("btn-success");
 	pressedButton.classList.add("btn-info");
@@ -78,30 +90,37 @@ function TimeString(time)
 function ButtonSetup(day, dayNum)
 {
 	
-	document.getElementById(day + 8).addEventListener("click", function() {
-		ButtonHandling(this, 8, dayNum)
-	});
-	document.getElementById(day + 10).addEventListener("click", function() {
-		ButtonHandling(this, 10, dayNum)
-	});
-	document.getElementById(day + 12).addEventListener("click", function() {
-		ButtonHandling(this, 12, dayNum)
-	});
-	document.getElementById(day + 14).addEventListener("click", function() {
-		ButtonHandling(this, 14, dayNum)
-	});
-	document.getElementById(day + 16).addEventListener("click", function() {
-		ButtonHandling(this, 16, dayNum)
-	});
-	document.getElementById(day + 18).addEventListener("click", function() {
-		ButtonHandling(this, 18, dayNum)
-	});
-	document.getElementById(day + 20).addEventListener("click", function() {
-		ButtonHandling(this, 20, dayNum)
-	});
-	document.getElementById(day + 22).addEventListener("click", function() {
-		ButtonHandling(this, 22, dayNum)
-	});
+	var t = document.getElementById(day + 8);
+	t.addEventListener("click", function() {ButtonHandling(this, 8, dayNum)});
+	btnArr.push(t);
+	
+	var t1 = document.getElementById(day + 10);
+	t1.addEventListener("click", function() {ButtonHandling(this, 10, dayNum)});
+	btnArr.push(t1);
+	
+	var t2 = document.getElementById(day + 12);
+	t2.addEventListener("click", function() {ButtonHandling(this, 12, dayNum)});
+	btnArr.push(t2);
+	
+	var t3 = document.getElementById(day + 14);
+	t3.addEventListener("click", function() {ButtonHandling(this, 14, dayNum)});
+	btnArr.push(t3);
+	
+	var t4 = document.getElementById(day + 16);
+	t4.addEventListener("click", function() {ButtonHandling(this, 16, dayNum)});
+	btnArr.push(t4);
+	
+	var t5 = document.getElementById(day + 18);
+	t5.addEventListener("click", function() {ButtonHandling(this, 18, dayNum)});
+	btnArr.push(t5);
+	
+	var t6 = document.getElementById(day + 20);
+	t6.addEventListener("click", function() {ButtonHandling(this, 20, dayNum)});
+	btnArr.push(t6);
+	
+	var t7 = document.getElementById(day + 22);
+	t7.addEventListener("click", function() {ButtonHandling(this, 22, dayNum)});
+	btnArr.push(t7);
 }
 
 //Converts from an int to a string more suitable for sql
