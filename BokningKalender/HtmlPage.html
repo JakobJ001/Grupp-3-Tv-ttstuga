@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html id="html">
 <head>
     <title></title>
     <meta charset="utf-8" />
@@ -18,77 +18,95 @@
             <thead>
                 <tr>
                     <th>Tid</th>
+					<th>Söndag</th>
                     <th>Måndag</th>
                     <th>Tisdag</th>
                     <th>Onsdag</th>
                     <th>Torsdag</th>
                     <th>Fredag</th>
+					<th>Lördag</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>8:00-10:00</td>
-                    <td><input type="button" class="btn btn-success" id="mon8-10" value="Icke-Bokat" name="Monday8-10" onClick=""/></td>
-                    <td><input type="button" class="btn btn-success" id="tue8-10" value="Icke-Bokat" name="Tuesday8-10" onClick="" /></td>
-                    <td><input type="button" class="btn btn-success" id="wed8-10" value="Icke-Bokat" name="Wednesday8-10" onClick="" /></td>
-                    <td><input type="button" class="btn btn-success" id="thu8-10" value="Icke-Bokat" name="Thursday8-10" onClick="" /></td>
-                    <td><input type="button" class="btn btn-success" id="fri8-10" value="Icke-Bokat" name="Friday8-10" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun8" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon8" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue8" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed8" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu8" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri8" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat8" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>10:00-12:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday10-12" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday10-12" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday10-12" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday10-12" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday10-12" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun10" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon10" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue10" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed10" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu10" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri10" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat10" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>12:00-14:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday12-14" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday12-14" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday12-14" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday12-14" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday12-14" onClick=")" /></td>
+					<td><input type="button" class="btn btn-success" id="sun12" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon12" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue12" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed12" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu12" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri12" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat12" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>14:00-16:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday14-16" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday14-16" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday14-16" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday14-16" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday14-16" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun14" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon14" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue14" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed14" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu14" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri14" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat14" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>16:00-18:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday16-18" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday16-18" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday16-18" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday16-18" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday16-18" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun16" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon16" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue16" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed16" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu16" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri16" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat16" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>18:00-20:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday18-20" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday18-20" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday18-20" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday18-20" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday18-20" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun18" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon18" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue18" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed18" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu18" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri18" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat18" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>20:00-22:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday20-22" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday20-22" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday20-22" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday20-22" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday20-22" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun20" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon20" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue20" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed20" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu20" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri20" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat20" value="Icke-Bokat"/></td>
                 </tr>
                 <tr>
                     <td>22:00-24:00</td>
-                    <td><input type="button" value="Icke-Bokat" name="Monday22-24" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Tuesday22-24" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Wednesday22-24" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Thursday22-24" onClick="" /></td>
-                    <td><input type="button" value="Icke-Bokat" name="Friday22-24" onClick="" /></td>
+					<td><input type="button" class="btn btn-success" id="sun22" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon22" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue22" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed22" value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu22" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri22" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat22" value="Icke-Bokat"/></td>
                 </tr>
 				<td> </td>
 				<td> </td>
@@ -103,7 +121,10 @@
 				<td id="weekday"><strong>Weekday</strong></td>
 				<td id="date"><strong>Date</strong></td>
 				<td id="time"><strong>Time</strong></td>
-				<td><input type="button" class="btn btn-default" id="boka" value="---Boka---" name="Boka" onClick="" /></td>
+				<td><form method="post">
+					<input type="HIDDEN" name="date" id="postDate"/>
+					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka" onClick="" />
+				</td>
 				<td><input type="button" class="btn btn-default" id="avbryt" value="--Avbryt--" name="Boka" onClick="" /></td>
 				</tr>
             </tbody>
