@@ -22,6 +22,64 @@ ButtonSetup("thu", 4);
 ButtonSetup("fri", 5);
 ButtonSetup("sat", 6);
 
+function CheckValidDates()
+{
+	for (var i = 0; i < 7; ++i)
+	{
+		CheckValidDates(i);
+	}
+}
+
+function CheckValidDay(day)
+{
+	var weekDay = WeekDayString(day);
+	var date = new Date();
+	var dif = 7 * offset + (day - date.getDay());
+	date.setDate(date.getDate() + dif);
+	var dateString = date.getMonth() + 1 + "-" + date.getDate();
+	time = GetTime(time);
+	var maxDate = new Date();
+	maxDate.setDate(this.getDate + 31);
+	date.setSeconds(0);
+	date.setMinutes(0);
+	
+	for (var i = 8; i != 24; i += 2)
+	{
+		date.setHours(i);
+		var btn = getElementById(weekDay + i);
+		if (date.getDate() < thisDate.getDate())
+		{
+			btn.classList.remove("btn-success");
+			btn.classList.remove("btn-danger");
+			btn.classList.add("btn-secondary");
+			btn.value = "-------";
+			continue;
+		}
+		if (maxDate.getDate() < date.getDate())
+		{
+			btn.classList.remove("btn-success");
+			btn.classList.remove("btn-danger");
+			btn.classList.add("btn-secondary");
+			btn.value = "-------";
+			continue;
+		}
+		var dateString = date.getMonth() + 1 + "-" + date.getDate();
+		dateString = date.getFullYear + "-" + dateString + " " + time + ":00";
+		if (booked.includes(dateString))
+		{
+			btn.classList.remove("btn-success");
+			btn.classList.remove("btn-secondary");
+			btn.classList.add("btn-danger");
+			
+			btn.value = "Bokad";
+		}
+		
+		btn.classList.remove("btn-danger");
+		btn.classList.remove("btn-secondary");
+		btn.classList.add("btn-success");
+		btn.value = "Icke-bokad";
+	}
+}
 
 function ButtonHandling(pressedButton, time, day){
   	if (pressedButton.value == "Bokad")
@@ -185,10 +243,6 @@ function WeekDayString(day)
 	return weekDay;
 }
 
-function IsLeap(year)
-{
-	return ((year % 4) == 0)
-}
 
 /*
 pressedButton.onclick = function() {
