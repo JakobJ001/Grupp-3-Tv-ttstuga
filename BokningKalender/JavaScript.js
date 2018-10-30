@@ -3,14 +3,8 @@ $(document).ready(function(){
 
 Vet icke vad du tänkte göra med de här
 
-var avbrytKnapp = document.getElementById("avbryt");
-var bokaKnapp = document.getElementById("boka");
-
-var bokingInfo = document.getElementById("bookingDIV");
-bokingInfo.style.display = "none";
-
 */
-
+var bokingInfo = document.getElementById("bookingDIV");
 var btnArr = [];
 var offset = 0;
 var thisDate = new Date();
@@ -22,49 +16,94 @@ ButtonSetup("thu", 4);
 ButtonSetup("fri", 5);
 ButtonSetup("sat", 6);
 
+CheckValidDates();
+var abort = document.getElementById("abort");
+
+abort.addEventListener("click", function(){CheckValidDates()});
+
+var back = document.getElementById("back");
+back.addEventListener("click", function() {--offset; CheckValidDates()});
+
+var forward = document.getElementById("forward");
+forward.addEventListener("click", function() {++offset; CheckValidDates()});
+
+//################################
+//GLOBAL END GLOBAL END GLOBAL END
+//################################
 function CheckValidDates()
 {
 	for (var i = 0; i < 7; ++i)
 	{
-		CheckValidDates(i);
+		CheckValidDay(i);
 	}
+}
+
+//Checks if the date less occures before or after the date more
+function IsEarlier(less, more)
+{
+	if (less.getFullYear() > more.getFullYear())
+	{
+		return false;
+	}
+	if (less.getMonth() > more.getMonth() && less.getFullYear() == more.getFullYear())
+	{
+		return false;
+	}
+	if (less.getDate() > more.getDate() && less.getMonth() == more.getMonth() && less.getFullYear() == more.getFullYear())
+	{
+		return false;
+	}
+	return true;
 }
 
 function CheckValidDay(day)
 {
-	var weekDay = WeekDayString(day);
+	var weekDay = ShortWeekDayString(day);
 	var date = new Date();
 	var dif = 7 * offset + (day - date.getDay());
 	date.setDate(date.getDate() + dif);
 	var dateString = date.getMonth() + 1 + "-" + date.getDate();
 	time = GetTime(time);
 	var maxDate = new Date();
-	maxDate.setDate(this.getDate + 31);
+	maxDate.setDate(maxDate.getDate() + 31);
 	date.setSeconds(0);
 	date.setMinutes(0);
 	
+	var header = document.getElementById(weekDay);
+	var longWeekDay = WeekDayString(day);
+	header.innerHTML = longWeekDay + "-" + date.getDate();
+	
+	//Loops through all the different times of the day
 	for (var i = 8; i != 24; i += 2)
 	{
 		date.setHours(i);
-		var btn = getElementById(weekDay + i);
-		if (date.getDate() < thisDate.getDate())
+		var btn = document.getElementById(weekDay + i);
+		//If the date has already occured
+		if (IsEarlier(date, thisDate))
 		{
 			btn.classList.remove("btn-success");
 			btn.classList.remove("btn-danger");
+			btn.classList.remove("btn-info");
 			btn.classList.add("btn-secondary");
 			btn.value = "-------";
 			continue;
 		}
-		if (maxDate.getDate() < date.getDate())
+		//If the date is more than 31 days from now
+		if (IsEarlier(maxDate, date))
 		{
 			btn.classList.remove("btn-success");
 			btn.classList.remove("btn-danger");
+			btn.classList.remove("btn-info");
 			btn.classList.add("btn-secondary");
 			btn.value = "-------";
 			continue;
 		}
 		var dateString = date.getMonth() + 1 + "-" + date.getDate();
 		dateString = date.getFullYear + "-" + dateString + " " + time + ":00";
+		
+		
+		/*
+		//If the time is already booked
 		if (booked.includes(dateString))
 		{
 			btn.classList.remove("btn-success");
@@ -73,29 +112,26 @@ function CheckValidDay(day)
 			
 			btn.value = "Bokad";
 		}
-		
+		*/
+		//Standard
 		btn.classList.remove("btn-danger");
 		btn.classList.remove("btn-secondary");
+		btn.classList.remove("btn-info");
 		btn.classList.add("btn-success");
 		btn.value = "Icke-bokad";
 	}
 }
 
-function ButtonHandling(pressedButton, time, day){
-  	if (pressedButton.value == "Bokad")
+//The function that's ran everytime someone presses one of the booking buttons
+function ButtonHandling(pressedButton, time, day)
+{
+  	//
+	if (pressedButton.value == "Bokad" || pressedButton.value == "-------")
 	{
 		return;
 	}
 	
-	for (var i = 0; i < btnArr.length; ++i)
-	{
-		if (pressedButton != btnArr[i] && btnArr[i].value != "Bokad")
-		{
-			btnArr[i].classList.remove("btn-info");
-			btnArr[i].classList.add("btn-success");
-			btnArr[i].value = "Icke-bokad";
-		}
-	}
+	CheckValidDates();
 	pressedButton.classList.remove("btn-success");
 	pressedButton.classList.add("btn-info");
 	pressedButton.value = "-----------"; 
@@ -114,10 +150,13 @@ function BookingSetup(time, day)
 	date.setDate(date.getDate() + dif);
 	var dateString = date.getMonth() + 1 + "-" + date.getDate();
 	time = GetTime(time);
-	document.getElementById("date").innerHTML = "<strong>" + dateString + "<strong>";
-	document.getElementById("time").innerHTML = "<strong>" + TimeString(time) + "<strong>";
+	document.getElementById("year").innerHTML = "<strong>" + date.getFullYear() + "</strong>";
+	document.getElementById("date").innerHTML = "<strong>" + dateString + "</strong>";
+	document.getElementById("time").innerHTML = "<strong>" + TimeString(time) + "</strong>";
 	document.getElementById("postDate").value = thisDate.getFullYear() + "-" + dateString + " " + time + ":00";
 }
+
+
 //Returns the time as a string for display
 function TimeString(time)
 {
@@ -145,6 +184,7 @@ function TimeString(time)
 }
 
 //Assings the function and right parameters to all of the buttons
+//This isn't done in a loop because something odd happend to the values when I tried it
 function ButtonSetup(day, dayNum)
 {
 	
@@ -208,6 +248,43 @@ function GetTime(time)
 	alert(time);
 }
 
+
+function ShortWeekDayString(day)
+{
+	var weekDay;
+	if (day < 0 || day > 6)
+	{
+		document.getElementById("html").innerHTML = "Day variable in function BookingSetup is out of range";
+		alert(day);
+	}
+	switch (day)
+	{
+		case 0:
+			weekDay = "sun";
+			break;
+		case 1:
+			weekDay = "mon";
+			break;
+		case 2:
+			weekDay = "tue";
+			break;
+		case 3:
+			weekDay = "wed";
+			break;
+		case 4:
+			weekDay = "thu";
+			break;
+		case 5:
+			weekDay = "fri";
+			break;
+		case 6:
+			weekDay = "sat";
+			break;
+	}
+	return weekDay;
+}
+
+
 function WeekDayString(day)
 {
 	var weekDay;
@@ -243,34 +320,5 @@ function WeekDayString(day)
 	return weekDay;
 }
 
-
-/*
-pressedButton.onclick = function() {
-  	 pressedButton.classList.remove("btn-success");
-	 mon8.classList.add("btn-info");
-	 mon8.value = "-----------";
-	 document.getElementById("weekday").innerHTML = "<strong>Monday<strong>";
-	 document.getElementById("date").innerHTML = "<strong>Date<strong>";
-	 document.getElementById("time").innerHTML = "<strong>8 - 10<strong>";
-	 bokingInfo.style.display = null;
-	 pressedButton = mon8;
-}
-*/
-
-avbrytKnapp.onclick = function() {
-
-    if (bokingInfo.style.display === "none") {
-        bokingInfo.style.display = null;
-    } else {
-        bokingInfo.style.display = "none";
-    }
-	}
-
-//HJÄLP: HAR INGEN ANNIN HUR MAN FÅR DETTA ATT BLI VARIABLER
-bokaKnapp.onclick = function() {
-	pressedButton.classList.remove("btn-info");
-	pressedButton.classList.add("btn-danger");
-	pressedButton.value = "---Bokad---"
-}
 	
 });
