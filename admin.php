@@ -215,7 +215,6 @@ function PrintSite($result, $toAlert)
 //Checking if there's a valid session
 function SessionCheck()
 {
-	return true;
 	session_start();
 	//If no session exist
 	if(!isset($_SESSION['password']))
