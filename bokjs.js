@@ -102,7 +102,6 @@ function CheckValidDay(day)
 		dateString = date.getFullYear + "-" + dateString + " " + time + ":00";
 		
 		
-		/*
 		//If the time is already booked
 		if (booked.includes(dateString))
 		{
@@ -112,7 +111,6 @@ function CheckValidDay(day)
 			
 			btn.value = "Bokad";
 		}
-		*/
 		//Standard
 		btn.classList.remove("btn-danger");
 		btn.classList.remove("btn-secondary");

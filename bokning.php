@@ -166,6 +166,20 @@ if ($alreadyBooked)
 	return;
 }
 
+$toPrint = file_get_contents("startBook.txt");
 
+if (count(bookedDates) > 0)
+{
+	$toPrint .= "<script>var booked = array(";
 
+	for ($i = 0; $i < count(bookedDates) - 1; ++$i)
+	{
+		$toPrint .= bookedDates[$i]['date'];
+		$toPrint .= ",";
+	}
+
+	$toPrint .= bookedDates[count(bookedDates) -1];
+	$toPrint .= ");</script>";
+}
+$toPrint .= file_get_contents("endBook.txt");
 ?>
