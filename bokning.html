@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+
+<html id="html">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="bokjs.js"></script>
+    <link href="Content/animate.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div style="width:90%;margin-left:5%;margin-right:5%">
+        <table class="table">
+            <thead>
+                <tr>
+					<th style="width:10%;"></th>
+                    <th style="width:10%;">Tid</th>
+					<th id="sun" style="width:10%;">Söndag</th>
+                    <th id="mon" style="width:10%;">Måndag</th>
+                    <th id="tue" style="width:10%;">Tisdag</th>
+                    <th id="wed" style="width:10%;">Onsdag</th>
+                    <th id="thu" style="width:10%;">Torsdag</th>
+                    <th id="fri" style="width:10%;">Fredag</th>
+					<th id="sat" style="width:10%;">Lördag</th>
+					<th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+					<td rowspan="8"><div id="back" style="font-size:75px;padding-top:100%;">&#8678;</div></td>
+                    <td>8:00-10:00</td>
+					<td><input type="button" class="btn btn-success" style="width:70%;"id="sun8" value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon8" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue8" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed8" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu8" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri8" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat8" style="width:70%;"value="Icke-Bokat"/></td>
+					<td rowspan="8"><div id="forward" style="font-size:75px;padding-top:100%;">&#8680;</div></td>
+                </tr>
+                <tr>
+                    <td>10:00-12:00</td>
+					<td><input type="button" class="btn btn-success" id="sun10" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon10" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue10" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed10" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu10" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri10" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat10" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+                <tr>
+                    <td>12:00-14:00</td>
+					<td><input type="button" class="btn btn-success" id="sun12" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon12" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue12" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed12" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu12" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri12" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat12" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+                <tr>
+                    <td>14:00-16:00</td>
+					<td><input type="button" class="btn btn-success" id="sun14" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon14" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue14" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed14" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu14" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri14" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat14" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+                <tr>
+                    <td>16:00-18:00</td>
+					<td><input type="button" class="btn btn-success" id="sun16" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon16" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue16" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed16" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu16" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri16" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat16" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+                <tr>
+                    <td>18:00-20:00</td>
+					<td><input type="button" class="btn btn-success" id="sun18" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon18" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue18" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed18" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu18" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri18" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat18" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+                <tr>
+                    <td>20:00-22:00</td>
+					<td><input type="button" class="btn btn-success" id="sun20" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon20" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue20" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed20" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu20" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri20" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat20" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+                <tr>
+                    <td>22:00-24:00</td>
+					<td><input type="button" class="btn btn-success" id="sun22" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="mon22" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="tue22" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="wed22" style="width:70%;"value="Icke-Bokat" /></td>
+                    <td><input type="button" class="btn btn-success" id="thu22" style="width:70%;"value="Icke-Bokat"/></td>
+                    <td><input type="button" class="btn btn-success" id="fri22" style="width:70%;"value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success" id="sat22" style="width:70%;"value="Icke-Bokat"/></td>
+                </tr>
+				<td/>
+				<td/>
+				<td/>
+				<td/>
+				<td/>
+				<td/>
+				<td/>
+				<td/>
+				<td/>
+				<tr>
+				</tr>
+			    <tr id="bookingDIV" style="display:none;">
+			    <td/>
+				<td>Bokning:</td>
+				<td id="weekday"><strong>Weekday</strong></td>
+				<td id="year"><strong>Year</strong></td> 
+				<td id="date"><strong>Date</strong></td>
+				<td id="time"><strong>Time</strong></td>
+				<td><form method="post">
+					<input type="HIDDEN" name="date" id="postDate"/>
+					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka" onClick="" />
+				</td>
+				<td><input type="button" class="btn btn-default" id="abort" value="--Avbryt--" onClick="" /></td>
+				<td/>
+				</tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>
