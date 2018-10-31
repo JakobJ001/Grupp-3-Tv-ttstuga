@@ -154,26 +154,13 @@ for ($i = 0; $i < $rowCount; ++$i)
 	if (!$alreadyBooked)
 	{
 		$bDate = new datetime($bookedDates[$i]['date']);
-		if ($date > $bDate)
-		{
-			$toDelete[count($toDelete)] = $bookedDates[$i]['id'];
-		}
-		else if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'])
+		if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'] && $date > $bDate)
 		{
 			$alreadyBooked = $bookedDates[$i];
 		}
 	}
 }
-//Removes the booked dates in need of deletion
-if (count($toDelete) > 0)
-{
-	$worked = SqlDelete("DELETE FROM booked WHERE id IN ", DBUSERS, $toDelete);
-	if (!$worked)
-	{
-		echo("Någonting blev fel med databasen!");
-		return;
-	}
-}
+
 
 if ($alreadyBooked)
 {
