@@ -55,6 +55,18 @@ function IsEarlier(less, more)
 	}
 	return true;
 }
+//Adds a zero to the start of the number if there isn't one
+//This is needed for the 
+function ConvertedNum(num)
+{
+	var sNum = num.toString();
+	
+	if (sNum.length == 1)
+	{
+		return "0" + sNum;
+	}
+	return sNum;
+}
 
 function CheckValidDay(day)
 {
@@ -62,7 +74,7 @@ function CheckValidDay(day)
 	var date = new Date();
 	var dif = 7 * offset + (day - date.getDay());
 	date.setDate(date.getDate() + dif);
-	var dateString = date.getMonth() + 1 + "-" + date.getDate();
+	var dateString = ConvertedNum(date.getMonth()) + 1 + "-" + ConvertedNum(date.getDate());
 	time = GetTime(time);
 	var maxDate = new Date();
 	maxDate.setDate(maxDate.getDate() + 31);

@@ -168,16 +168,16 @@ if ($alreadyBooked)
 
 $toPrint = file_get_contents("startBook.txt");
 
-$toPrint .= "<script>var booked = [";
+$toPrint .= "<script>var booked = [\"";
 
-for ($i = 0; $i < count(bookedDates) - 1; ++$i)
+for ($i = 0; $i < count($bookedDates) - 1; ++$i)
 {
-	$toPrint .= bookedDates[$i]['date'];
-	$toPrint .= ",";
+	$toPrint .= $bookedDates[$i]['date'];
+	$toPrint .= "\",\"";
 }
-if (count(bookedDates) > 0 && bookedDates[count(bookedDates) - 1]!= "b")
+if (count($bookedDates) > 0)
 {
-	$toPrint .= bookedDates[count(bookedDates) - 1];
+	$toPrint .= $bookedDates[count($bookedDates) - 1]['date'] ."\"";
 }
 $toPrint .= "];</script>";
 $toPrint .= file_get_contents("endBook.txt");
