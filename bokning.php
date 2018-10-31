@@ -40,7 +40,7 @@ function RemoveBooking()
 		return "Fel med post";
 	}
 	
-	$toDelete = $booking['id'];
+	$toDelete = $_POST['id'];
 	
 	$query = "DELETE FROM booked WHERE id=\"". $toDelete . "\"";
 	
