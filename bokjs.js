@@ -74,8 +74,9 @@ function CheckValidDay(day)
 	var date = new Date();
 	var dif = 7 * offset + (day - date.getDay());
 	date.setDate(date.getDate() + dif);
-	var dateString = ConvertedNum(date.getMonth()) + 1 + "-" + ConvertedNum(date.getDate());
-	time = GetTime(time);
+    var dateString = ConvertedNum(date.getMonth() + 1) + "-" + ConvertedNum(date.getDate());
+    
+
 	var maxDate = new Date();
 	maxDate.setDate(maxDate.getDate() + 31);
 	date.setSeconds(0);
@@ -87,9 +88,11 @@ function CheckValidDay(day)
 	
 	//Loops through all the different times of the day
 	for (var i = 8; i != 24; i += 2)
-	{
-		date.setHours(i);
-		var btn = document.getElementById(weekDay + i);
+    {
+        
+        date.setHours(i);
+        var time = GetTime(i);
+        var btn = document.getElementById(weekDay + i);
 		//If the date has already occured
 		if (IsEarlier(date, thisDate))
 		{
@@ -110,18 +113,17 @@ function CheckValidDay(day)
 			btn.value = "-------";
 			continue;
 		}
-		var dateString = date.getMonth() + 1 + "-" + date.getDate();
-		dateString = date.getFullYear + "-" + dateString + " " + time + ":00";
-		
-		
+		var fullDateString = date.getFullYear() + "-" + dateString + " " + time + ":00";
+
 		//If the time is already booked
-		if (booked.includes(dateString))
+        if (booked.includes(fullDateString))
 		{
 			btn.classList.remove("btn-success");
 			btn.classList.remove("btn-secondary");
 			btn.classList.add("btn-danger");
 			
-			btn.value = "Bokad";
+            btn.value = "Bokad";
+            continue;
 		}
 		//Standard
 		btn.classList.remove("btn-danger");

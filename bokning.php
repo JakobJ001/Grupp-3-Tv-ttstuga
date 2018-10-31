@@ -40,15 +40,30 @@ function RemoveBooking()
 		return "Fel med post";
 	}
 	
-	$toDelete = array($booking['id']);
+	$toDelete = $booking['id'];
 	
-	$worked = SqlDelete("DELETE FROM booked WHERE id IN ", DBUSERS, $toDelete);
-	if (!$worked)
+	$query = "DELETE FROM booked WHERE id=\"". $toDelete . "\"";
+	
+	try
 	{
-		return "Kunde inte ta bort bokningen";
-	}
+		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
 	
-	return true;
+		if (!($stmt = $connect->prepare($query))) 				
+		{	
+			return false;
+		}
+		//We do not want to continue if something goes wrong
+		if(!($stmt->execute()))
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	catch (EXCEPTION $e)
+	{
+		return false;
+	}
 }
 
 //Checking for a session
