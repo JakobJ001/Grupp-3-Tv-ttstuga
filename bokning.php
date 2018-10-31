@@ -24,6 +24,20 @@ function Book()
 		{
 			return "Kunde inte lägga till";
 		}
+		
+		if (!($smtm = $connect->prepare($query)))
+		{
+			return "Kunde inte ansluta till sql server";
+		}
+		if (!($smtm->execute()))
+		{
+			return "Kunde inte lägga till";
+		}
+		
+		$query = "UPDATE users SET booked=\"". $time->format("Y-m-d H:i:s") ."\" WHERE appartment=\"" . $_SESSION['appartment'] . "\"";
+		
+		
+		
 		return "Tid bookad";
 	}
 	catch (EXCEPTION $e)
