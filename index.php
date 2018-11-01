@@ -9,7 +9,7 @@
 	//Prints out the basic loginform
 	function PrintForm($error = false)
 	{
-		$toPrint = file_get_contents("startIndex.txt")
+		$toPrint = file_get_contents("startIndex.txt");
 		if ($error)
 		{
 			$toPrint .= "<label style=\"color:red;margin-top:5%;\">Fel användarnamn eller lösenord</label>";
