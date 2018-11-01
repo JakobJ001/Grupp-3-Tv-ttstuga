@@ -193,12 +193,12 @@ function PrintSite($result, $toAlert)
 	//Account table
 	for($i = 0; $i < count($result); ++$i)
 	{
-		$toPrint .= "<tr><th>" . $result[$i]['appartment']. "</th>";
-		$toPrint .= "<th>" . $result[$i]['name'] . "</th>"; 
-		$toPrint .= "<th><img src=\"" . $result[$i]['picture'] ."\"/></th>";
-		$toPrint .= "<th>" . $result[$i]['booked'] . "</th>";
-		$toPrint .= "<th><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" class=\"btn btn-danger\" value=\"Radera\" name=\"remove\"/>";
-		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\" name=\"appartment\"/></th></form></tr>";
+		$toPrint .= "<tr><td style=\"width:20%;height:50px;\">" . $result[$i]['appartment']. "</td>";
+		$toPrint .= "<td style=\"width:20%;height:50px;\">" . $result[$i]['name'] . "</td>"; 
+		$toPrint .= "<td style=\"width:20%;height:50px;\"><img style=\"width:100px;height:100px;\" src=\"" . $result[$i]['picture'] ."\"/></td>";
+		$toPrint .= "<td style=\"width:20%;height:50px;\">" . $result[$i]['booked'] . "</td>";
+		$toPrint .= "<td style=\"width:20%;height:50px;\"><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" class=\"btn btn-danger\" value=\"Radera\" name=\"remove\"/>";
+		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\" name=\"appartment\"/></td></form></tr>";
 	}
 	if ($toAlert)
 	{
