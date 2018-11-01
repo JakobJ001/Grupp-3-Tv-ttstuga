@@ -16,3 +16,4 @@
 			<hr>
 			<p>Lösenord</p>
 			<input type="password" name="password">
+			<br>

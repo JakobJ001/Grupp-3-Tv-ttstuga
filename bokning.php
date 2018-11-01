@@ -8,23 +8,14 @@ function Book()
 	$time = new DateTime($_POST['date']);
 	$appartment = $_SESSION['appartment'];
 	
-	$query = "INSERT INTO booked (date, appartment) VALUES ('" . $time->format("Y-m-d H:i:s")."', '$appartment')";
 	
 	try
 	{
 		
 		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
 		
-		
-		if (!($smtm = $connect->prepare($query)))
-		{
-			return "Kunde inte ansluta till sql server";
-		}
-		if (!($smtm->execute()))
-		{
-			return "Kunde inte lägga till";
-		}
-		
+		$query = "INSERT INTO booked (date, appartment) VALUES ('" . $time->format("Y-m-d H:i:s")."', '$appartment')";
+	
 		if (!($smtm = $connect->prepare($query)))
 		{
 			return "Kunde inte ansluta till sql server";
@@ -35,6 +26,17 @@ function Book()
 		}
 		
 		$query = "UPDATE users SET booked=\"". $time->format("Y-m-d H:i:s") ."\" WHERE appartment=\"" . $_SESSION['appartment'] . "\"";
+		
+		
+		if (!($smtm = $connect->prepare($query)))
+		{
+			return "Kunde inte ansluta till sql server";
+		}
+		if (!($smtm->execute()))
+		{
+			return "Kunde inte lägga till";
+		}
+		
 		
 		
 		
@@ -94,11 +96,11 @@ function SessionCheck()
 //If the user has already booked
 function AlreadyBooked($booked)
 {
+	$toPrint = file_get_contents("startAvboka.txt");
 	$date = new datetime($booked['date']);
-	$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>"; 
-	$toPrint .= "<p>Du har redan bokat en tvättid</p><p>Tiden du har bokad är:</p>" . $date->format("Y-m-d H:i:s");
-	$toPrint .= "<p>Vill du avboka?</p><form action=\"bokning.php\" method=\"POST\"><input type=\"HIDDEN\" value=\"" . $booked['id']. "\" name=\"id\"/>";
-	$toPrint .= "<input type=\"submit\" name=\"unbook\" value=\"Avboka\"/></body></html>";
+	$toPrint .= $date->format("Y-m-d H:i:s");
+	$toPrint .= "</p><p>Vill du avboka?</p><form action=\"bokning.php\" method=\"POST\"><input type=\"HIDDEN\" value=\"" . $booked['id']. "\" name=\"id\"/>";
+	$toPrint .= file_get_contents("endAvboka.txt");
 	echo($toPrint);
 }
 

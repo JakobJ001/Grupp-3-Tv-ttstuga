@@ -11,13 +11,13 @@
                 <tr>
 					<th style="width:10%;"></th>
                     <th style="width:10%;">Tid</th>
-					<th id="sun" style="width:10%;">Söndag</th>
-                    <th id="mon" style="width:10%;">Måndag</th>
+					<th id="sun" style="width:10%;">SÃ¶ndag</th>
+                    <th id="mon" style="width:10%;">MÃ¥ndag</th>
                     <th id="tue" style="width:10%;">Tisdag</th>
                     <th id="wed" style="width:10%;">Onsdag</th>
                     <th id="thu" style="width:10%;">Torsdag</th>
                     <th id="fri" style="width:10%;">Fredag</th>
-					<th id="sat" style="width:10%;">Lördag</th>
+					<th id="sat" style="width:10%;">LÃ¶rdag</th>
 					<th></th>
                 </tr>
             </thead>
