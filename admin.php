@@ -197,7 +197,7 @@ function PrintSite($result, $toAlert)
 		$toPrint .= "<th>" . $result[$i]['name'] . "</th>"; 
 		$toPrint .= "<th><img src=\"" . $result[$i]['picture'] ."\"/></th>";
 		$toPrint .= "<th>" . $result[$i]['booked'] . "</th>";
-		$toPrint .= "<th><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" value=\"Radera\" name=\"remove\"/>";
+		$toPrint .= "<th><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" class=\"btn btn-danger\" value=\"Radera\" name=\"remove\"/>";
 		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\" name=\"appartment\"/></th></form></tr>";
 	}
 	if ($toAlert)
@@ -206,7 +206,7 @@ function PrintSite($result, $toAlert)
 	}
 	else
 	{
-		$toPrint .= "</table></body></html>";
+		$toPrint .= "</table></div></body></html>";
 	}
 	echo($toPrint);
 }
