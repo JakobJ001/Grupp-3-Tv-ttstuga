@@ -1,4 +1,4 @@
-<input type="submit" class="btn btn-danger" value="Avboka"/>
+<input type="submit" name="unbook" class="btn btn-danger" value="Avboka"/>
 		</form>
 		</div>
 	</div>
