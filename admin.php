@@ -41,7 +41,6 @@ function SetupFile($file, $name)
 	}
 	if (!$type)
 	{
-		var_dump($fileType);
 		return false;
 	}
 	$tempFile = file_get_contents($file['tmp_name']);
@@ -193,11 +192,11 @@ function PrintSite($result, $toAlert)
 	//Account table
 	for($i = 0; $i < count($result); ++$i)
 	{
-		$toPrint .= "<tr><td style=\"width:20%;height:50px;\">" . $result[$i]['appartment']. "</td>";
-		$toPrint .= "<td style=\"width:20%;height:50px;\">" . $result[$i]['name'] . "</td>"; 
-		$toPrint .= "<td style=\"width:20%;height:50px;\"><img style=\"width:100px;height:100px;\" src=\"" . $result[$i]['picture'] ."\"/></td>";
-		$toPrint .= "<td style=\"width:20%;height:50px;\">" . $result[$i]['booked'] . "</td>";
-		$toPrint .= "<td style=\"width:20%;height:50px;\"><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" class=\"btn btn-danger\" value=\"Radera\" name=\"remove\"/>";
+		$toPrint .= "<tr><td style=\"width:20%;height:50px;padding-top:2%;\">" . $result[$i]['appartment']. "</td>";
+		$toPrint .= "<td style=\"width:20%;height:50px;padding-top:2%;\">" . $result[$i]['name'] . "</td>"; 
+		$toPrint .= "<td style=\"width:20%;height:50px;\"><img style=\"width:75px;height:75px;\" src=\"" . $result[$i]['picture'] ."\"/></td>";
+		$toPrint .= "<td style=\"width:20%;height:50px;padding-top:2%;\">" . $result[$i]['booked'] . "</td>";
+		$toPrint .= "<td style=\"width:20%;height:50px;padding-top:2%;\"><form action=\"admin.php\" method=\"POST\" ><input type=\"submit\" class=\"btn btn-danger\" value=\"Radera\" name=\"remove\"/>";
 		$toPrint .= "<input type=\"HIDDEN\" value=\"" . $result[$i]['appartment'] . "\" name=\"appartment\"/></td></form></tr>";
 	}
 	if ($toAlert)
