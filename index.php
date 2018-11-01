@@ -9,12 +9,12 @@
 	//Prints out the basic loginform
 	function PrintForm($error = false)
 	{
-		$toPrint = "<html lang=\"sv\"><head><meta charset=\"UTF-8\"><title>Login</title></head><body>";
+		$toPrint = file_get_contents("startIndex.txt")
 		if ($error)
 		{
-			$toPrint .= "<p>Fel lägenhetsnummer eller användarnamn</p>";
+			$toPrint .= "<label style=\"color:red;margin-top:5%;\">Fel användarnamn eller lösenord</label>";
 		}
-		$toPrint .= "<form action=\"index.php\" method=\"POST\"><input type=\"text\" value=\"Lägenhetsnummer\"/ name=\"appartment\"><input type=\"password\" value=\"Password\" name=\"password\"/><input type=\"submit\"/></form></body></html>";
+		$toPrint .= file_get_contents("endIndex.txt");
 		
 		echo($toPrint);
 	}

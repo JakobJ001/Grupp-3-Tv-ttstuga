@@ -168,7 +168,7 @@ for ($i = 0; $i < $rowCount; ++$i)
 	if (!$alreadyBooked)
 	{
 		$bDate = new datetime($bookedDates[$i]['date']);
-		if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'] && $date > $bDate)
+		if ($bookedDates[$i]['appartment'] == $_SESSION['appartment'] && $date < $bDate)
 		{
 			$alreadyBooked = $bookedDates[$i];
 		}

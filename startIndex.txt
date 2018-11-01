@@ -8,19 +8,11 @@
 	<body>
 		<div style="position:absolute;top:15%;left:43%;background-color:#E8E8E8;width:14%">
 			<div style="margin-left:5%;padding-bottom:2%;padding-top:2%;">
-			<h1>TvÃ¤ttbokning</h1>
+			<h1>Tvättbokning</h1>
 			<hr>
 			<form method="POST">
-			<p>LÃ¤genhetsnummer</p>
+			<p>Lägenhetsnummer</p>
 			<input type="text" name="appartment"/>
 			<hr>
-			<p>LÃ¶senord</p>
+			<p>Lösenord</p>
 			<input type="password" name="password">
-			<label style="color:red;margin-top:5%;">Fel anvÃ¤ndarnamn eller lÃ¶senord</label>
-			<input style="margin-top:4%;text-align:center" class="btn btn-success" type="submit">
-			
-			</form>
-			</div>
-		</div>
-	</body>
-</html>
