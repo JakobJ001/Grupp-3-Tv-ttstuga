@@ -150,7 +150,8 @@ function ButtonHandling(pressedButton, time, day)
 	BookingSetup(time, day);
 	
 	bokingInfo.style.display = null; 
-
+	var toHide = document.getElementById("bookingDIV2");
+	toHide.style.display = "none";
 } 
 
 function BookingSetup(time, day)

@@ -121,9 +121,20 @@ width: 100%;
 				<td/>
 				<tr>
 				</tr>
-			    <tr>
+				<tr id="bookingDIV2">
 			    <td/>
-				<div id="bookingDIV" style="display:none;">
+				<td/>
+				<td/>
+				<td/> 
+				<td/>
+				<td/>
+				<td/>
+				</td>
+				<td><input id="defWeek" type="button"class="btn" value="Denna vecka"/></td>
+				<td/>
+				</tr>
+			    <tr id="bookingDIV" style="display:none;">
+			    <td/>
 				<td>Bokning:</td>
 				<td id="weekday"><strong>Weekday</strong></td>
 				<td id="year"><strong>Year</strong></td> 
@@ -134,7 +145,7 @@ width: 100%;
 					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka"/>
 				</td>
 				</div>
-				<td><input id="defWeek" type="button" class="btn" value="Denna vecka"/></td>
+				<td><input id="defWeek" type="button"class="btn" value="Denna vecka"/></td>
 				<td/>
 				</tr>
             </tbody>
