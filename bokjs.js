@@ -17,12 +17,11 @@ ButtonSetup("fri", 5);
 ButtonSetup("sat", 6);
 
 CheckValidDates();
-var abort = document.getElementById("abort");
-
-abort.addEventListener("click", function(){CheckValidDates()});
 
 var back = document.getElementById("back");
 back.addEventListener("click", function() {--offset; CheckValidDates()});
+
+alert(back);
 
 var forward = document.getElementById("forward");
 forward.addEventListener("click", function() {++offset; CheckValidDates()});
