@@ -145,7 +145,7 @@ width: 100%;
 					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka"/>
 				</td>
 				</div>
-				<td><input id="defWeek" type="button"class="btn" value="Denna vecka"/></td>
+				<td><input id="defWeek2" type="button"class="btn" value="Denna vecka"/></td>
 				<td/>
 				</tr>
             </tbody>

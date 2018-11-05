@@ -21,6 +21,10 @@ CheckValidDates();
 var defWeek = document.getElementById("defWeek");
 defWeek.addEventListener("click", function() {offset = 0; CheckValidDates()});
 
+var defWeek = document.getElementById("defWeek2");
+defWeek2.addEventListener("click", function() {offset = 0; CheckValidDates()});
+
+
 var back = document.getElementById("back");
 back.addEventListener("click", function() {--offset; CheckValidDates()});
 
