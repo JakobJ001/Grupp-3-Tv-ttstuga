@@ -4,7 +4,7 @@
     <link href="Content/animate.css" rel="stylesheet" />
 </head>
 <style>
-.dateBtn{
+.btn{
 
 width: 100%;
 }
@@ -29,9 +29,9 @@ width: 100%;
             </thead>
             <tbody>
                 <tr>
-					<td rowspan="8"><div id="back" style="font-size:75px;padding-top:100%;">&#8678;</div></td>
+					<td rowspan="8"><div id="back" style="font-size:75px;padding-top:100%;"></div></td>
                     <td>8:00-10:00</td>
-					<td><input type="button" class="btn btn-success" name="dateBtn" id="sun8" value="Icke-Bokat"/></td>
+					<td><input type="button" class="btn btn-success"  id="sun8" value="Icke-Bokat"/></td>
                     <td><input type="button" class="btn btn-success" id="mon8" name="dateBtn" value="Icke-Bokat"/></td>
                     <td><input type="button" class="btn btn-success" id="tue8" name="dateBtn" value="Icke-Bokat"/></td>
                     <td><input type="button" class="btn btn-success" id="wed8" name="dateBtn" value="Icke-Bokat" /></td>
