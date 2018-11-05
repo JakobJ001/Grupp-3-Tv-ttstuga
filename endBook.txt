@@ -29,8 +29,8 @@ width: 100%;
             </thead>
             <tbody>
                 <tr>
-					<td rowspan="8"><div id="back" style="font-size:75px;padding-top:100%;"></div></td>
-                    <td>8:00-10:00</td>
+					<td rowspan="8"><div id="back" style="font-size:75px;padding-top:100%;">&#8678;</div></td>
+                    <td>8:00-10:00</td>	
 					<td><input type="button" class="btn btn-success"  id="sun8" value="Icke-Bokat"/></td>
                     <td><input type="button" class="btn btn-success" id="mon8" name="dateBtn" value="Icke-Bokat"/></td>
                     <td><input type="button" class="btn btn-success" id="tue8" name="dateBtn" value="Icke-Bokat"/></td>
@@ -121,8 +121,9 @@ width: 100%;
 				<td/>
 				<tr>
 				</tr>
-			    <tr id="bookingDIV" style="display:none;">
+			    <tr style="display:none;">
 			    <td/>
+				<div id="bookingDIV">
 				<td>Bokning:</td>
 				<td id="weekday"><strong>Weekday</strong></td>
 				<td id="year"><strong>Year</strong></td> 
@@ -132,7 +133,8 @@ width: 100%;
 					<input type="HIDDEN" name="date" id="postDate"/>
 					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka" onClick="" />
 				</td>
-				<td></td>
+				</div>
+				<td><input id="defWeek" class="btn" value="Denna vecka"/></td>
 				<td/>
 				</tr>
             </tbody>
