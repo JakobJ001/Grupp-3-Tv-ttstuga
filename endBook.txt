@@ -123,7 +123,7 @@ width: 100%;
 				</tr>
 			    <tr>
 			    <td/>
-				<div id="bookingDIV">
+				<div id="bookingDIV" style="display:none;">
 				<td>Bokning:</td>
 				<td id="weekday"><strong>Weekday</strong></td>
 				<td id="year"><strong>Year</strong></td> 
@@ -131,10 +131,10 @@ width: 100%;
 				<td id="time"><strong>Time</strong></td>
 				<td><form method="post">
 					<input type="HIDDEN" name="date" id="postDate"/>
-					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka" onClick="" />
+					<input type="submit" name="book" class="btn btn-default" id="boka" value="---Boka---" name="Boka"/>
 				</td>
 				</div>
-				<td><input id="defWeek" class="btn" value="Denna vecka"/></td>
+				<td><input id="defWeek" type="button" class="btn" value="Denna vecka"/></td>
 				<td/>
 				</tr>
             </tbody>
