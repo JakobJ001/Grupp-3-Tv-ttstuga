@@ -121,7 +121,7 @@ width: 100%;
 				<td/>
 				<tr>
 				</tr>
-			    <tr style="display:none;">
+			    <tr>
 			    <td/>
 				<div id="bookingDIV">
 				<td>Bokning:</td>

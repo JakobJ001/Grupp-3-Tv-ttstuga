@@ -24,8 +24,6 @@ defWeek.addEventListener("click", function() {offset = 0; CheckValidDates()});
 var back = document.getElementById("back");
 back.addEventListener("click", function() {--offset; CheckValidDates()});
 
-alert(back);
-
 var forward = document.getElementById("forward");
 forward.addEventListener("click", function() {++offset; CheckValidDates()});
 
