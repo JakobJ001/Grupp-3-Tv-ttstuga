@@ -1,6 +1,5 @@
 ﻿<?php
 	session_start();
-	header('Content-type: text/html; charset=utf-8');
 	
 	//INCLUDES
 	include 'globalVal.php';
@@ -53,9 +52,6 @@
 		
 		if (!password_verify($password , $user['password']))
 		{
-			var_dump($user);
-			echo($password);
-			echo($curr["password"]);
 			PrintForm(true);
 			return;
 		}

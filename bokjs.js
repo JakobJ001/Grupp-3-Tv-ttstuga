@@ -138,10 +138,10 @@ function CheckValidDay(day)
 	}
 }
 
-//The function that's ran everytime someone presses one of the booking buttons
+//The function that runs everytime someone presses one of the date buttons
 function ButtonHandling(pressedButton, time, day)
 {
-  	//
+  	//If the date is not bookable
 	if (pressedButton.value == "Bokad" || pressedButton.value == "-------")
 	{
 		return;
@@ -158,6 +158,7 @@ function ButtonHandling(pressedButton, time, day)
 	toHide.style.display = "none";
 } 
 
+//Responsible for setting up the form
 function BookingSetup(time, day)
 {
 	var weekDay = WeekDayString(day);
@@ -336,6 +337,4 @@ function WeekDayString(day)
 	}
 	return weekDay;
 }
-
-	
 });

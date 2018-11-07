@@ -1,5 +1,7 @@
 <?php
 
+include "globalVal.php";
+
 function Database($query)
 {
 	try
@@ -55,12 +57,13 @@ function ExecuteQuery($query)
 	
 }
 
-include "globalVal.php";
 
+//Database
 $query = "CREATE DATABASE " . DBUSERS . " COLLATE utf8_swedish_ci;";
 
 Database($query);
 
+//Users table
 $query = "CREATE TABLE users(
 		appartment varchar(6) COLLATE utf8_swedish_ci, 
 		password varchar(72) COLLATE utf8_swedish_ci,
@@ -70,6 +73,7 @@ $query = "CREATE TABLE users(
 
 ExecuteQuery($query);
 
+//booked table
 $query = "CREATE TABLE booked(
 	id int(11) unsigned NOT NULL AUTO_INCREMENT,
 	date datetime,
@@ -77,11 +81,10 @@ $query = "CREATE TABLE booked(
 	PRIMARY KEY (id)
 	);";
 
-	
 ExecuteQuery($query);
 
-
+//Makes the admin user
 header("Location: adminSetup.php");
-echo("Database ". DBUSERS . ", and tables booked users was created succesfully");
+
 return;
 ?>

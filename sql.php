@@ -12,26 +12,26 @@ function SqlRequest($query, $db , &$rowCount = "")
 		//We do not want to continue if something goes wrong
 		if (!($stmt = $connect->prepare($query))) 			
 		{	
-			return ERROR;
+			return false;
 		
 		}
 		//We do not want to continue if something goes wrong
 		if(!($stmt->execute()))
 		{
-			return ERROR;
+			return false;
 		}
 		$rowCount = $stmt->rowCount();
 		$toReturn = "";
 		//Checking if there's nothing to return
 		if(!($toReturn = $stmt->fetchAll()))
 		{
-			return NOTHING;
+			return false;
 		}
 		return $toReturn;
 	}
 	catch (EXCEPTION $e)
 	{
-		return ERROR;
+		return false;
 	}
 }
 //Removing any odd inputs done by the user

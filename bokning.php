@@ -18,7 +18,7 @@ function Book()
 	
 		if (!($smtm = $connect->prepare($query)))
 		{
-			return "Kunde inte ansluta till sql server";
+			return "Kunde inte förbereda förfrågan";
 		}
 		if (!($smtm->execute()))
 		{
@@ -51,6 +51,7 @@ function Book()
 //Removes a booked date
 function RemoveBooking()
 {
+	//If there's no Id with the post request
 	if(!isset($_POST['id']))
 	{
 		return "Fel med post";
@@ -58,6 +59,7 @@ function RemoveBooking()
 	
 	$toDelete = $_POST['id'];
 	
+	//Delets the tuple from booked
 	$query = "DELETE FROM booked WHERE id=\"". $toDelete . "\"";
 	
 	try
@@ -66,12 +68,24 @@ function RemoveBooking()
 	
 		if (!($stmt = $connect->prepare($query))) 				
 		{	
-			return false;
+			return "Kunde inte förbereda förfrågan";
 		}
-		//We do not want to continue if something goes wrong
 		if(!($stmt->execute()))
 		{
-			return false;
+			return "Kunde inte ta bort bokning";
+		}
+		
+		//Updates the users table so that booked = "0000-00-00 00:00:00"
+		$query = "UPDATE users SET booked=\"0000-00-00 00:00:00\" WHERE appartment=\"" . $_SESSION['appartment'] . "\"";
+		
+		
+		if (!($smtm = $connect->prepare($query)))
+		{
+			return "Kunde inte förereda förfrågan";
+		}
+		if (!($smtm->execute()))
+		{
+			return "Kunde inte ta bort bokning";
 		}
 		
 		return true;
@@ -112,6 +126,8 @@ function AlreadyBooked($booked)
 
 SessionCheck();
 
+
+//Checks if any post calls have been made
 if (isset($_POST['unbook']))
 {
 	$value = RemoveBooking();
@@ -131,6 +147,7 @@ else if (isset($_POST['book']))
 	}
 }
 
+//User verification
 $rowCount;
 $result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
 		
@@ -150,21 +167,22 @@ if(!$curr || $_SESSION['password'] != $curr[1])
 	return;
 }
 
+
 //Current date
 $date = new DateTime();
 
 //Gets a list of all dates
 $bookedDates = SqlRequest("SELECT * FROM booked", DBUSERS, $rowCount);
-if ($bookedDates == ERROR)
+if (!$bookedDates)
 {
 	echo("Någonting blev fel");
 	return;
 }
 
-$toDelete = array();
-$dates = array();
+
+
+//Checks if the user has already booked a date
 $alreadyBooked = false;
-//Checks if any of the booked dates have already been
 for ($i = 0; $i < $rowCount; ++$i)
 {
 	if (!$alreadyBooked)
@@ -177,15 +195,16 @@ for ($i = 0; $i < $rowCount; ++$i)
 	}
 }
 
-
 if ($alreadyBooked)
 {
 	AlreadyBooked($alreadyBooked);
 	return;
 }
 
+
 $toPrint = file_get_contents("startBook.txt");
 
+//echoes all of the booked times 
 $toPrint .= "<script>var booked = [\"";
 
 for ($i = 0; $i < count($bookedDates) - 1; ++$i)
@@ -198,6 +217,7 @@ if (count($bookedDates) > 0)
 	$toPrint .= $bookedDates[count($bookedDates) - 1]['date'] ."\"";
 }
 $toPrint .= "];</script>";
+
 $toPrint .= file_get_contents("endBook.txt");
 echo($toPrint);
 ?>

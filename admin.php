@@ -44,7 +44,7 @@ function SetupFile($file, $name)
 	}
 	$tempFile = file_get_contents($file['tmp_name']);
 	$filePath = "pic/" . $fileName;
-	$writeToo = fopen("/var/www/html/Grupp-3-Tv-ttstuga/" . $filePath, "w");
+	$writeToo = fopen(DIRECTORY . $filePath, "w");
 	fwrite($writeToo, $tempFile);
 	fclose($writeToo);
 	return $filePath;
@@ -158,7 +158,7 @@ function AddUser()
 		return "Something's wrong with the file";
 	}
 	
-	//Booked is NULL 
+	//Booked is 0000-00-00 00:00:00
 	$query = "INSERT INTO users (appartment, password, name, picture, booked) VALUES ('$appartment' ,'$password', '$name','$filePath', 'NULL');";
 	try
 	{
