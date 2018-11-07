@@ -44,7 +44,7 @@ function SetupFile($file, $name)
 	}
 	$tempFile = file_get_contents($file['tmp_name']);
 	$filePath = "pic/" . $fileName;
-	$writeToo = fopen(DIRECTORY . $filePath, "w");
+	$writeToo = fopen(DIRECTORY . "/" . $filePath, "w");
 	fwrite($writeToo, $tempFile);
 	fclose($writeToo);
 	return $filePath;
