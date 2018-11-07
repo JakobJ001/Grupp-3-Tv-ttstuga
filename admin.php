@@ -22,7 +22,6 @@ function SetupFile($file, $name)
 		{
 			$keepGoing = false;
 		}
-		echo($i);
 	}
 	
 	//If no filename was found
@@ -269,7 +268,7 @@ if(!$curr || $_SESSION['password'] != $curr['password'] && $_SESSION['password']
 	return;
 }
 
-echo("password");
+
 PrintSite($result, $toAlert);
 
 ?>
