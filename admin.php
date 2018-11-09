@@ -3,7 +3,7 @@ include 'globalVal.php';
 include 'sql.php';
 
 //Handles the file creation and saving
-function SetupFile($file, $name)
+function SetupFile($file)
 {
 	
 	$fileName = $file['name'];
@@ -44,7 +44,7 @@ function SetupFile($file, $name)
 	}
 	$tempFile = file_get_contents($file['tmp_name']);
 	$filePath = "pic/" . $fileName;
-	$writeToo = fopen(DIRECTORY . "/" . $filePath, "w");
+	$writeToo = fopen(__DIR__ . "/" . $filePath, "w");
 	fwrite($writeToo, $tempFile);
 	fclose($writeToo);
 	return $filePath;

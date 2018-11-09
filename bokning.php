@@ -171,16 +171,14 @@ if(!$curr || $_SESSION['password'] != $curr[1])
 //Current date
 $date = new DateTime();
 
+$toPrint = file_get_contents("startBook.txt");
+
+
 //Gets a list of all dates
 $bookedDates = SqlRequest("SELECT * FROM booked", DBUSERS, $rowCount);
-if (!$bookedDates)
+if ($bookedDates)
 {
-	echo("Någonting blev fel");
-	return;
-}
-
-
-
+	
 //Checks if the user has already booked a date
 $alreadyBooked = false;
 for ($i = 0; $i < $rowCount; ++$i)
@@ -202,7 +200,6 @@ if ($alreadyBooked)
 }
 
 
-$toPrint = file_get_contents("startBook.txt");
 
 //echoes all of the booked times 
 $toPrint .= "<script>var booked = [\"";
@@ -217,6 +214,13 @@ if (count($bookedDates) > 0)
 	$toPrint .= $bookedDates[count($bookedDates) - 1]['date'] ."\"";
 }
 $toPrint .= "];</script>";
+
+}
+else
+{
+	
+	echo("<script>var booked = [];</script>");
+}
 
 $toPrint .= file_get_contents("endBook.txt");
 echo($toPrint);
