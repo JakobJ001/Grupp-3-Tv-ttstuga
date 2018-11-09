@@ -1,9 +1,4 @@
 ﻿<?php
-	session_start();
-	
-	//INCLUDES
-	include 'globalVal.php';
-	include 'sql.php';
 		
 	//Prints out the basic loginform
 	function PrintForm($error = false)
@@ -28,6 +23,13 @@
 
 
 	//If no post call has been made
+	
+	session_start();
+	
+	//INCLUDES
+	include 'globalVal.php';
+	include 'sql.php';
+	
 	if (empty($_POST))
 	{
 		PrintForm();
