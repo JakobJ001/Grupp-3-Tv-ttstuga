@@ -65,7 +65,7 @@ Database($query);
 
 //Users table
 $query = "CREATE TABLE users(
-		appartment varchar(6) COLLATE utf8_swedish_ci, 
+		appartment varchar(6) UNIQUE COLLATE utf8_swedish_ci, 
 		password varchar(72) COLLATE utf8_swedish_ci,
 		name varchar(100) COLLATE utf8_swedish_ci, 
 		picture varchar(100) COLLATE utf8_swedish_ci,
