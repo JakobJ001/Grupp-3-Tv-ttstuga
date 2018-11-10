@@ -230,8 +230,6 @@ function SessionCheck()
 */
 
 SessionCheck();
-$toAlert = NULL;
-
 
 $rowCount = "";
 $result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
@@ -252,6 +250,7 @@ if(!$curr || $_SESSION['password'] != $curr['password'] && $_SESSION['password']
 	return;
 }
 
+$toAlert = NULL;
 if (!empty($_POST))
 {
 	if (isset($_POST['add']))
