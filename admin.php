@@ -244,7 +244,7 @@ for($i = 0; $i < $rowCount && !$curr; ++$i)
 	}
 }
 //Verifying that the appartmentnumber and password are both valid
-if(!$curr || $_SESSION['password'] != $curr['password'] && $_SESSION['password'] == "admin")
+if(!$curr || $_SESSION['password'] != $curr['password'] || $_SESSION['appartment'] != "admin")
 {
 	header("Location: index.php");
 	return;
