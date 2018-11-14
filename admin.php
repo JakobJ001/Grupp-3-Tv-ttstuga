@@ -256,15 +256,20 @@ if (!empty($_POST))
 	if (isset($_POST['add']))
 	{
 		$toAlert = AddUser();
+		
 	}
 	if (isset($_POST['update']))
 	{
 		$toAlert = UpdateUser();
+		
+
 	}
 	if (isset($_POST['remove']))
 	{
 		$toAlert = DeleteUser();
-	}	
+	}
+	$result = SqlRequest("SELECT * FROM users", DBUSERS, $rowCount);
+
 }
 
 
