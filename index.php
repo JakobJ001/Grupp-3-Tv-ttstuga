@@ -41,7 +41,7 @@
 		$appartment = CleanString($_POST['appartment']);
 		$password = CleanString($_POST['password']);
 		
-		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=appdb", USERNAME, PASSWORD);
+		$connect = new PDO("mysql:host=" . SERVERNAME . ";dbname=" . DBUSERS, USERNAME, PASSWORD);
 		if (!($stmt = $connect->prepare("SELECT * FROM users WHERE appartment = '$appartment'"))) 			
 		{	
 			return;
