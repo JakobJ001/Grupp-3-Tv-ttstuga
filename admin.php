@@ -58,7 +58,7 @@ function UpdateUser()
 	$second = false;
 	if (!empty($_POST['name']))
 	{
-		$query .= "name='" . $_POST['name']."' ";
+		$query .= "name='" . CleanString($_POST['name'])."' ";
 		$updateNeeded = true;
 		$second = true;
 	}
@@ -79,7 +79,7 @@ function UpdateUser()
 		{
 			$query .= ", ";
 		}
-		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+		$password = password_hash(CleanString($_POST['password']), PASSWORD_DEFAULT);
 		$query .= "password='$password' ";
 		$updateNeeded = true;
 	}
@@ -118,7 +118,7 @@ function UpdateUser()
 //Deletes a user
 function DeleteUser()
 {
-	$appartment = $_POST['appartment'];
+	$appartment = CleanString($_POST['appartment']);
 	
 	$query = "DELETE FROM users WHERE appartment = '$appartment'";
 
@@ -146,12 +146,12 @@ function DeleteUser()
 
 function AddUser()
 {
-	$appartment = $_POST['appartment'];
-	$name = $_POST['name'];
+	$appartment = CleanString($_POST['appartment']);
+	$name = CleanString($_POST['name']);
 	$filePath = SetupFile($_FILES['file']);
 	
 	//Encrypts the password with standard values
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$password = password_hash(CleanString($_POST['password']), PASSWORD_DEFAULT);
 	
 	if (!$filePath)
 	{
