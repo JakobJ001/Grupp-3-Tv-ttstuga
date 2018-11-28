@@ -150,11 +150,11 @@ function AddUser()
 	$name = CleanString($_POST['name']);
 	$filePath = SetupFile($_FILES['file']);
 	
-	if (!(isset($_POST['appartment'])))
+	if ("" == $_POST['appartment'])
 	{
 		return "Missing appartmentnumber";
 	}
-	else if (!(isset($_POST['name'])))
+	else if ("" == $_POST['name'])
 	{
 		return "Missing name";
 	}
