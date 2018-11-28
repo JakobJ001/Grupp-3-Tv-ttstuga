@@ -6,7 +6,7 @@
 		$toPrint = file_get_contents("startIndex.txt");
 		if ($error)
 		{
-			$toPrint .= "<label style=\"color:red;margin-top:5%;\">Fel användarnamn eller lösenord</label>";
+			$toPrint .= "<label style=\"color:red;margin-top:5%;\">Fel lägenhetsnummer eller lösenord</label>";
 		}
 		$toPrint .= file_get_contents("endIndex.txt");
 		

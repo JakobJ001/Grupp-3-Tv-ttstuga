@@ -150,6 +150,15 @@ function AddUser()
 	$name = CleanString($_POST['name']);
 	$filePath = SetupFile($_FILES['file']);
 	
+	if (!(isset($_POST['appartment'])))
+	{
+		return "Missing appartmentnumber";
+	}
+	else if (!(isset($_POST['name'])))
+	{
+		return "Missing name";
+	}
+	
 	//Encrypts the password with standard values
 	$password = password_hash(CleanString($_POST['password']), PASSWORD_DEFAULT);
 	
